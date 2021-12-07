@@ -1,9 +1,16 @@
-import React from 'react'
+import './FlyDisplay.css'
 
-const FlyDisplay = (props) => {
-
+const FlyDisplay = ({ fly }) => {
 
     return(
-        <div></div>
+        <div className="FlyContainer">
+            <h1>{fly.name}</h1>
+        </div>
     )
 }
+
+FlyDisplay.propTypes = {
+
+}
+
+export default FlyDisplay
