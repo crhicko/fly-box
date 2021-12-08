@@ -5,6 +5,7 @@ import Button from './components/Button'
 import FlyDisplay from './components/FlyDisplay/FlyDisplay'
 import {useEffect, useState} from 'react'
 import AddFly from './components/AddFly'
+import Register from './components/Register'
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
 
   return (
     <div className="App">
+      <Register />
       <Header ></Header>
       <MenuBar></MenuBar>
       {console.log(flies)}
@@ -49,6 +51,7 @@ function App() {
         console.log("beans")
       }}></Button>
       <AddFly onAdd={addFly}/>
+
     </div>
   );
 }
