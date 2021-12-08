@@ -6,6 +6,7 @@ import FlyDisplay from './components/FlyDisplay/FlyDisplay'
 import {useEffect, useState} from 'react'
 import AddFly from './components/AddFly'
 import Register from './components/Register'
+import Login from './components/Login'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <Register />
+      <Login />
       <Header ></Header>
       <MenuBar></MenuBar>
       {console.log(flies)}
