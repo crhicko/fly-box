@@ -11,7 +11,6 @@ import Login from './components/Login'
 function App() {
 
     const [flies, setFlies] = useState([])
-    const [user, setUser] = useState(null)
 
     const addFly = async (fly) => {
       console.log("posting")
@@ -30,7 +29,9 @@ function App() {
 
     useEffect(() => {
       const fetchFlies = async () => {
-        const res = await fetch('http://localhost:4000/flies')
+        const res = await fetch('http://localhost:4000/flies', {
+          credentials: 'include'
+        })
         const data = await res.json()
 
         setFlies(data)

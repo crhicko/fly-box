@@ -4,7 +4,7 @@ import useDidUpdateEffect from '../../util/useDidUpdateEffect'
 
 const FlyDisplay = ({ fly }) => {
 
-    const [favorite, setFavorite] = useState(false)
+    const [favorite, setFavorite] = useState(fly.fly_id)
 
 
     useDidUpdateEffect(() => {
