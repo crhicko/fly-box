@@ -11,6 +11,7 @@ import Login from './components/Login'
 function App() {
 
     const [flies, setFlies] = useState([])
+    const [user, setUser] = useState(null)
 
     const addFly = async (fly) => {
       console.log("posting")
@@ -42,6 +43,9 @@ function App() {
     <div className="App">
       <Register />
       <Login />
+      <Button onClick={() => {
+        fetch('http://localhost:4000/user', {credentials:  'include'})
+      }}/>
       <Header ></Header>
       <MenuBar></MenuBar>
       {console.log(flies)}
