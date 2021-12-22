@@ -1,0 +1,36 @@
+header {
+    background-color: slategray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color:aliceblue
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav_buttons {
+    list-style: none
+}
+
+.nav_buttons li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_buttons li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_buttons li a:hover {
+    color: aquamarine;
+}

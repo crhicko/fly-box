@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './components/Header/Header'
-import MenuBar from './components/MenuBar/MenuBar';
 import Button from './components/Button'
 import FlyDisplay from './components/FlyDisplay/FlyDisplay'
 import {useEffect, useState} from 'react'
@@ -42,13 +41,14 @@ function App() {
 
   return (
     <div className="App">
+      <Header></Header>
+      <img className="logo" src="../public/logo.svg" alt="logo"/>
+      {/* <header>Header</header> */}
       <Register />
       <Login />
       <Button onClick={() => {
         fetch('http://localhost:4000/user', {credentials:  'include'})
       }}/>
-      <Header ></Header>
-      <MenuBar></MenuBar>
       {console.log(flies)}
       {console.log(typeof(flies))}
       <div className="FlyFlex">
