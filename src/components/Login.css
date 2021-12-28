@@ -15,10 +15,14 @@
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 0.5rem;
-    padding: 1rem
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+    display: inline-block
 }
 
-.show-modal {
-    visibility: visible;
-    transition: visibility
+.exit {
+    position:absolute;
+    top: 0;
+    right: 0;
+    /* padding-top: 0.25rem; */
+    padding-right: 0.25rem;
 }

@@ -12,6 +12,11 @@ function App() {
     const [flies, setFlies] = useState([])
     const [openLoginModal, setOpenLoginModal] = useState(false);
 
+    const toggleLoginModal = () => {
+      if(!openLoginModal) setOpenLoginModal(true)
+      else setOpenLoginModal(false)
+    }
+
     const addFly = async (fly) => {
       console.log("posting")
       const res = await fetch('http://localhost:4000/flies', {
@@ -42,11 +47,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header openLoginModal={setOpenLoginModal}/>
+      <Header toggleLoginModal={toggleLoginModal}/>
       <img className="logo" src="../public/logo.svg" alt="logo"/>
       {/* <header>Header</header> */}
       <Register />
-      {openLoginModal && <Login />}
+      {openLoginModal && <Login toggleLoginModal={toggleLoginModal}/>}
       <Button onClick={() => {
         fetch('http://localhost:4000/user', {credentials:  'include'})
       }}/>

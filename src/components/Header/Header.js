@@ -1,10 +1,6 @@
 import './Header.css'
 
-const Header = ({openLoginModal}) => {
-    const toggle = () => {
-        console.log(openLoginModal)
-        openLoginModal(true)
-    }
+const Header = ({toggleLoginModal}) => {
 
     return (
         <header>
@@ -15,8 +11,7 @@ const Header = ({openLoginModal}) => {
                     <li><a href="s">Techniques</a></li>
                     <li><a href="s">Kit Builder</a></li>
                     <button onClick={() => {
-                        console.log(openLoginModal)
-                        openLoginModal(true)
+                        toggleLoginModal()
                     }}>Login</button>
                 </ul>
             </nav>
