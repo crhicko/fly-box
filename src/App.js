@@ -10,6 +10,7 @@ import Login from './components/Login'
 function App() {
 
     const [flies, setFlies] = useState([])
+    const [openLoginModal, setOpenLoginModal] = useState(false);
 
     const addFly = async (fly) => {
       console.log("posting")
@@ -41,11 +42,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header openLoginModal={setOpenLoginModal}/>
       <img className="logo" src="../public/logo.svg" alt="logo"/>
       {/* <header>Header</header> */}
       <Register />
-      <Login />
+      {openLoginModal && <Login />}
       <Button onClick={() => {
         fetch('http://localhost:4000/user', {credentials:  'include'})
       }}/>

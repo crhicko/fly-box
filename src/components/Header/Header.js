@@ -1,6 +1,11 @@
 import './Header.css'
 
-const Header = () => {
+const Header = ({openLoginModal}) => {
+    const toggle = () => {
+        console.log(openLoginModal)
+        openLoginModal(true)
+    }
+
     return (
         <header>
             {/* <img className="logo" src="http://localhost:3000/src/components/Header/3x.png" alt="logo"/> */}
@@ -9,6 +14,10 @@ const Header = () => {
                     <li><a href="s">Flies</a></li>
                     <li><a href="s">Techniques</a></li>
                     <li><a href="s">Kit Builder</a></li>
+                    <button onClick={() => {
+                        console.log(openLoginModal)
+                        openLoginModal(true)
+                    }}>Login</button>
                 </ul>
             </nav>
         </header>

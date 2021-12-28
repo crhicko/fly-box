@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import './Login.css'
 
 const Login = () => {
     const [loginUsername, setloginUsername] = useState('')
@@ -23,11 +24,13 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <input placeholder='username' onChange={(e) => setloginUsername(e.target.value)}/>
-            <input placeholder='password' onChange={(e) => setloginPassword(e.target.value)}/>
-            <button onClick={loginUser}>Submit</button>
+        <div className="modal">
+            <div className="modal-content">
+                <h1>Login</h1>
+                <input placeholder='username' onChange={(e) => setloginUsername(e.target.value)}/>
+                <input placeholder='password' onChange={(e) => setloginPassword(e.target.value)}/>
+                <button onClick={loginUser}>Submit</button>
+            </div>
         </div>
     )
 }
