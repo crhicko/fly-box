@@ -16,7 +16,10 @@
     background-color: white;
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem 0.5rem 0.5rem;
-    display: inline-block
+}
+
+.modal-content > div {
+    padding: .25rem
 }
 
 .exit {
