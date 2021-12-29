@@ -1,6 +1,5 @@
 const TextFormBox = ({placeholder, title, setText, checkmark}) => {
-    console.log(title)
-    console.log(checkmark)
+
     return (
         <div className='textFormBox'>
             <h4>{title}</h4>

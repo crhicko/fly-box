@@ -47,20 +47,20 @@ const Login = ({toggleLoginModal}) => {
     return (
         <div className="modal">
             <div className="modal-content">
-                <h1>Login</h1>
+                <h1>{isLoginForm ? 'Login' : 'Sign Up'}</h1>
                 <span className="exit" onClick={() => {toggleLoginModal()}}>X</span>
                 {isLoginForm ?
                     <div id="loginForm">
                         <TextFormBox placeholder='username' title='Username' setText={setUsername}/>
                         <TextFormBox placeholder='password' title='Password' setText={setPassword}/>
-                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(false)}>I have an account</span>
+                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(false)}>I don't have an account</span>
                     </div>
                     :
                     <div className="registrationForm">
                         <TextFormBox placeholder='username' title='Username' setText={setUsername}/>
                         <TextFormBox placeholder='password' title='Password' setText={setPassword} checkmark={isMatchingPassword}/>
                         <TextFormBox placeholder='Verify Password' title='Verify Password' setText={setVerifyPassword} checkmark={isMatchingPassword}/>
-                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(true)}>I don't have an account</span>
+                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(true)}>I have an account</span>
                     </div>
                 }
                 <div>
