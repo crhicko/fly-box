@@ -20,8 +20,6 @@ const FliesPage = () => {
       }, [])
 
 
-
-
       const addFly = async (fly) => {
         console.log("posting")
         const res = await fetch('http://localhost:4000/flies', {

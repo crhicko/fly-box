@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
 import FliesPage from './routes/FliesPage';
 import { UserContext } from './context/UserContext';
+import HomePage from './routes/HomePage';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/materials" element={<Login/>} />
           <Route path="/flies" element={<FliesPage/>}/>
+          <Route path="/home" element={<HomePage/>}/>
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>

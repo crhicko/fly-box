@@ -1,24 +1,20 @@
-.FlyContainer {
-    max-width: 300px;
-    margin-top: 20vh;
-    margin: 0 auto;
-    max-height: 300px;
-    display: flex;
-    flex-direction: column;
-}
-
-img {
-    height: auto;
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
 .card {
     border: 1px solid #bacdd8;
     padding: 8px;
     border-radius: 12px;
     flex-flow: 1;
+    max-width: 15vw;
+    /* height: 50%; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* width: 33% */
+}
+
+.card > img {
+    max-width: 100%;
+    /* max-height: 100%; */
+    border-radius: 12px;
+    object-fit: cover;
 }
 
 .tag {
@@ -33,10 +29,20 @@ img {
     background-color: aquamarine;
 }
 
-p {
-    text-overflow: ellipsis;
-}
 
 .favorite {
     color:green
+}
+
+.card > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    height: 150px;
+}
+
+.card > h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

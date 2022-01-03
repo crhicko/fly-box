@@ -21,6 +21,7 @@ const Header = ({toggleLoginModal}) => {
                 <ul className="nav_buttons">
                     <li><Link to="/flies">Flies</Link></li>
                     <li><Link to="/materials">{user?.username}</Link></li>
+                    <li><Link to="/home">Home</Link></li>
                     <li><a href="s">Kit Builder</a></li>
                     {user ?
                         <button onClick={() => {logoutUser()}}>Logout</button>
