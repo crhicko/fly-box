@@ -1,5 +1,5 @@
 import './FlyDisplay.css'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import useDidUpdateEffect from '../../util/useDidUpdateEffect'
 
 const FlyDisplay = ({ fly }) => {

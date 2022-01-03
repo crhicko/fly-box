@@ -1,4 +1,5 @@
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 const Header = ({toggleLoginModal}) => {
 
@@ -7,8 +8,8 @@ const Header = ({toggleLoginModal}) => {
             {/* <img className="logo" src="http://localhost:3000/src/components/Header/3x.png" alt="logo"/> */}
             <nav>
                 <ul className="nav_buttons">
-                    <li><a href="s">Flies</a></li>
-                    <li><a href="s">Techniques</a></li>
+                    <li><Link to="/flies">Flies</Link></li>
+                    <li><Link to="/materials">Techniques</Link></li>
                     <li><a href="s">Kit Builder</a></li>
                     <button onClick={() => {
                         toggleLoginModal()
