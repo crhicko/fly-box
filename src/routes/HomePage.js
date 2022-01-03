@@ -12,7 +12,7 @@ const HomePage = () => {
                 credentials: 'include'
             })
             const data = await res.json()
-
+            console.log(data)
             setFlies(data)
         }
 

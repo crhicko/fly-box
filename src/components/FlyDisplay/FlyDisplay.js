@@ -1,11 +1,13 @@
 import './FlyDisplay.css'
-import {  useState } from 'react'
+import {  useState, useContext } from 'react'
 import useDidUpdateEffect from '../../util/useDidUpdateEffect'
+import { UserContext } from '../../context/UserContext'
 
 const FlyDisplay = ({ fly }) => {
 
-    const [favorite, setFavorite] = useState(fly.fly_id)
+    const [favorite, setFavorite] = useState(false)
 
+    const {user} = useContext(UserContext)
 
     useDidUpdateEffect(() => {
         const postFavorite = async() => {
@@ -33,12 +35,14 @@ const FlyDisplay = ({ fly }) => {
             <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic"/>
             <h1>{fly.name}</h1>
             <span className="tag">Nymph</span>
-            <p>LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUMLOREM IPSUM vvvLOREM IPSUMLOREM IPSUM vv  vvvv vLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM</p>
+            <p>{fly.description}</p>
+            {(fly.user_id === user?.id) && <button>Edit</button>}
             <button className={`${favorite ? 'favorite' : ''}`} onClick={() => setFavorite(!favorite)}>Favorite</button>
         </div>
 
     )
 }
+
 
 FlyDisplay.propTypes = {
 
