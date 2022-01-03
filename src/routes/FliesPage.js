@@ -20,6 +20,8 @@ const FliesPage = () => {
       }, [])
 
 
+
+
       const addFly = async (fly) => {
         console.log("posting")
         const res = await fetch('http://localhost:4000/flies', {
@@ -35,13 +37,21 @@ const FliesPage = () => {
         console.log(data)
       }
 
+      const getUser = async() => {
+        console.log("getting user")
+        const res = await fetch('http://localhost:4000/user', {credentials:  'include'});
+        const data = await res.json();
+
+        console.log(data)
+      }
+
     return(
         <div>
             <h1> This is the flies page </h1>
             <img className="logo" src="../public/logo.svg" alt="logo"/>
 
             <Button onClick={() => {
-            fetch('http://localhost:4000/user', {credentials:  'include'})
+            getUser()
             }}/>
 
             <div className="FlyFlex">
