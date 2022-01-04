@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../context/UserContext"
 import './FlyPage.css'
 import Loader from "../util/Loader"
+import FavoriteIcon from "../components/FavoriteIcon"
 
 const FlyPage = () => {
     const [fly, setFly] = useState(null)
@@ -42,7 +43,7 @@ const FlyPage = () => {
                     </div>
                 </div>
                 <div className="info">
-                    {favorite ? <i className="fas fa-star"/> : <i className="far fa-star"/>}
+                    <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id}/>
                     <h1>{fly.name}</h1>
 
                     <p className="description" >{fly.description}</p>
