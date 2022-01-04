@@ -1,0 +1,60 @@
+.container {
+    margin-left: min(20vw, 200px);
+    margin-right: min(20vw, 200px);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px black solid;
+    background-color: #1C3144;
+    border-radius: 10px;
+    color: white
+}
+
+/* Gap under the image for some reason */
+img {
+    max-width: 400px;
+    display: block;
+    border-radius: 10px;
+}
+
+.topLevel {
+    border: 2px green solid;
+    display: inline-block;
+    /* display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr; */
+    display: flex;
+}
+
+.info {
+    border: 2px green solid;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 25px 10px 25px;
+}
+
+.tagBox {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.tagBox > .tag {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.description {
+    text-align: left;
+    transition: background-color 0.3s ease-in;
+}
+
+.description[contenteditable=true] {
+    background-color: salmon;
+}
