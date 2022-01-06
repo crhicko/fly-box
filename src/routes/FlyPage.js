@@ -43,7 +43,10 @@ const FlyPage = () => {
                     </div>
                 </div>
                 <div className="info">
-                    <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id}/>
+                    <div className="iconBox">
+                        <i className="far fa-edit"></i>
+                        <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id}/>
+                    </div>
                     <h1>{fly.name}</h1>
 
                     <p className="description" >{fly.description}</p>

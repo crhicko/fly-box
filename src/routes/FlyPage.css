@@ -1,13 +1,14 @@
 .container {
-    margin-left: min(20vw, 200px);
-    margin-right: min(20vw, 200px);
+    margin-left: max(10vw, 120px);
+    margin-right: max(10vw, 120px);
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
     border: 2px black solid;
     background-color: #1C3144;
     border-radius: 10px;
-    color: white
+    color: white;
+
 }
 
 /* Gap under the image for some reason */
@@ -18,7 +19,7 @@ img {
 }
 
 .topLevel {
-    border: 2px green solid;
+    /* border: 2px green solid; */
     display: inline-block;
     /* display: grid;
     gap: 1.5rem;
@@ -27,10 +28,11 @@ img {
 }
 
 .info {
-    border: 2px green solid;
+    /* border: 2px green solid; */
     width: 100%;
     overflow: hidden;
-    padding: 10px 25px 10px 25px;
+    padding: 0px 25px 0px 25px;
+    position: relative;
 }
 
 .tagBox {
@@ -57,4 +59,20 @@ img {
 
 .description[contenteditable=true] {
     background-color: salmon;
+}
+
+.iconBox {
+    /* border: 2px solid blue; */
+    position: absolute;
+    right: 0px;
+    /* display: block; */
+}
+
+.iconBox > *{
+    display: inline;
+    margin-left: 8px;
+}
+
+.iconBox i:hover {
+    color:antiquewhite;
 }
