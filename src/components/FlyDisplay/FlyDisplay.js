@@ -1,5 +1,5 @@
 import './FlyDisplay.css'
-import {  useState, useContext, useEffect } from 'react'
+import {  useState, useContext} from 'react'
 import { UserContext } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import FavoriteIcon from '../FavoriteIcon'
@@ -12,11 +12,6 @@ const FlyDisplay = ({ fly }) => {
     const {user} = useContext(UserContext)
     const navigate = useNavigate();
     console.log(fly)
-
-    useEffect(() => {
-        console.log('call')
-        setFavorite(fly.is_favorite)
-    },[])
 
     return(
         <div className="card" onClick={() => navigate('/flies/' + fly.id)}>
