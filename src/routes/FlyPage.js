@@ -44,7 +44,7 @@ const FlyPage = () => {
                 </div>
                 <div className="info">
                     <div className="iconBox">
-                        <i className="far fa-edit"></i>
+                        {(fly.user_id === user?.id) && <i className="far fa-edit"/>}
                         <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id}/>
                     </div>
                     <h1>{fly.name}</h1>

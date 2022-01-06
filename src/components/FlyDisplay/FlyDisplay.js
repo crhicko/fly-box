@@ -1,9 +1,9 @@
 import './FlyDisplay.css'
 import {  useState, useContext, useEffect } from 'react'
-import useDidUpdateEffect from '../../util/useDidUpdateEffect'
 import { UserContext } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import FavoriteIcon from '../FavoriteIcon'
+import PropTypes from 'prop-types'
 
 const FlyDisplay = ({ fly }) => {
 
@@ -33,7 +33,7 @@ const FlyDisplay = ({ fly }) => {
 
 
 FlyDisplay.propTypes = {
-
+    fly: PropTypes.object.isRequired
 }
 
 export default FlyDisplay
