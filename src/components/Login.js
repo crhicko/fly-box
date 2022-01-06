@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react'
 import TextFormBox from './TextFormBox/TextFormBox'
-import useDidUpdateEffect from '../util/useDidUpdateEffect'
 import { useNavigate } from 'react-router'
 import './Login.css'
 
@@ -57,7 +56,7 @@ const Login = ({toggleLoginModal}) => {
                     <div id="loginForm">
                         <TextFormBox placeholder='username' title='Username' setText={setUsername}/>
                         <TextFormBox placeholder='password' title='Password' setText={setPassword}/>
-                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(false)}>I don't have an account</span>
+                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(false)}>{"I don't have an account"}</span>
                     </div>
                     :
                     <div className="registrationForm">

@@ -1,8 +1,8 @@
 import './App.css';
 import Header from './components/Header/Header'
-import { useEffect, useState, useContext, createContext } from 'react'
+import { useEffect, useState} from 'react'
 import Login from './components/Login'
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
 import FliesPage from './routes/FliesPage';
 import { UserContext } from './context/UserContext';
@@ -20,7 +20,7 @@ function App() {
   }
 
   useEffect(() => {
-    const checkLoggedin = async () => {
+    const checkLoggedIn = async () => {
       console.log('Checking auth')
       const res = await fetch('http://localhost:4000/user', {
         credentials: 'include'
@@ -32,7 +32,7 @@ function App() {
         setUser(data.user)
       }
     }
-    checkLoggedin()
+    checkLoggedIn()
   }, [])
 
   return (

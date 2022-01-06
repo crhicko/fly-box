@@ -52,9 +52,6 @@ img {
     transition: background-color 0.3s ease-in;
 }
 
-.description[contenteditable=true] {
-    background-color: salmon;
-}
 
 .iconBox {
     /* border: 2px solid blue; */
