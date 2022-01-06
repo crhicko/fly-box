@@ -40,13 +40,15 @@ function App() {
       <BrowserRouter>
         <Header toggleLoginModal={toggleLoginModal} />
         {openLoginModal && <Login toggleLoginModal={toggleLoginModal} />}
-        <Routes>
-          <Route path="/materials" element={<Login />} />
-          <Route path="/flies/:id" element={<FlyPage />} />
-          <Route path="/flies" element={<FliesPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <div className="centerBox">
+          <Routes>
+            <Route path="/materials" element={<Login />} />
+            <Route path="/flies/:id" element={<FlyPage />} />
+            <Route path="/flies" element={<FliesPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </UserContext.Provider>
   );

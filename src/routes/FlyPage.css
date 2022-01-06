@@ -1,14 +1,9 @@
 .container {
-    margin-left: max(10vw, 120px);
-    margin-right: max(10vw, 120px);
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
     border: 2px black solid;
     background-color: #1C3144;
     border-radius: 10px;
     color: white;
-
+    padding: 20px;
 }
 
 /* Gap under the image for some reason */

@@ -5,6 +5,12 @@
   font-weight: 600;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -41,10 +47,19 @@
 }
 
 .FlyFlex {
-  display:flex
+  display:flex;
+  justify-content: space-between;
+
 }
 
 body {
   background: #69BCC9;
   margin: 0;
+}
+
+.centerBox {
+    margin-left: max(10vw, 100px);
+    margin-right: max(10vw, 100px);
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
