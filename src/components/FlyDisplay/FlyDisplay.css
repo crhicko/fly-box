@@ -9,6 +9,7 @@
     margin-bottom: 10px;
     /* width: 33% */
     transition: background-color 0.3s ease-in-out;
+    text-align: center;
 }
 
 .card > img {
