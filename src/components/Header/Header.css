@@ -1,12 +1,23 @@
 header {
     background-color: slategray;
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+header > div {
+    flex: 1 0 10vw;
 }
 
 nav {
-    width: 100%;
+    background-color: green;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
 }
 
 a {
@@ -33,4 +44,26 @@ a {
 
 .nav_buttons li a:hover {
     color: aquamarine;
+}
+
+.right-button-box {
+    background-color: red;
+    position: relative;
+}
+
+header > * {
+    /* flex-basis: 33%; */
+}
+
+header > :is(div, img) {
+
+}
+
+img {
+    text-align: left;
+}
+
+.right-button-box > button {
+    position: absolute;
+    right: 0;
 }
