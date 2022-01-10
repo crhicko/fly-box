@@ -15,3 +15,10 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.rounded-box {
+  border-radius: 12px;
+  background-color: slategray;
+  padding: 1em 1em 1em 1em;
+  display: inline-block;
+}
