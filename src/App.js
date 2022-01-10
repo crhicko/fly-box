@@ -11,7 +11,6 @@ import FlyPage from './routes/FlyPage';
 
 function App() {
 
-  const [openLoginModal, setOpenLoginModal] = useState(false);
   const [user, setUser] = useState(null)
 
   const toggleLoginModal = () => {
@@ -38,11 +37,10 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
-        <Header toggleLoginModal={toggleLoginModal} />
-        {openLoginModal && <Login toggleLoginModal={toggleLoginModal} />}
+        <Header/>
         <div className="centerBox">
           <Routes>
-            <Route path="/materials" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/flies/:id" element={<FlyPage />} />
             <Route path="/flies" element={<FliesPage />} />
             <Route path="/home" element={<HomePage />} />

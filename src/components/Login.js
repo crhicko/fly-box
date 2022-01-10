@@ -1,9 +1,10 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect, useContext } from 'react'
 import TextFormBox from './TextFormBox/TextFormBox'
 import { useNavigate } from 'react-router'
+import { UserContext } from '../context/UserContext'
 import './Login.css'
 
-const Login = ({toggleLoginModal}) => {
+const Login = () => {
     let navigate = useNavigate()
 
     const [username, setUsername] = useState('')
@@ -11,6 +12,8 @@ const Login = ({toggleLoginModal}) => {
     const [verifyPassword, setVerifyPassword] = useState('')
     const [isLoginForm, setIsLoginForm] = useState(true)
     const [isMatchingPassword, setIsMatchingPassword] = useState(false)
+
+    const { user, setUser } = useContext(UserContext)
 
     //Registration
     //TODO: Password rules validation
@@ -20,22 +23,22 @@ const Login = ({toggleLoginModal}) => {
     //TODO: collapse animation and form swap on reg/login swap
 
     useEffect(() => {
-        if(verifyPassword === '')
+        if (verifyPassword === '')
             return
         // console.log(password + " " + verifyPassword)
-        if(password === verifyPassword)
+        if (password === verifyPassword)
             setIsMatchingPassword(true)
         else
             setIsMatchingPassword(false)
     }, [verifyPassword, password]);
 
-    const loginUser = async() => {
+    const loginUser = async () => {
         const res = await fetch('http://localhost:4000/login', {
             method: 'POST',
             credentials: 'include',
             headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 username: username,
@@ -44,34 +47,43 @@ const Login = ({toggleLoginModal}) => {
         });
         const data = await res.json();
         console.log(data)
+        if (data.id) {
+            setUser(data)
+            navigate('/flies');
+        }
+        // if(data.message === "Successfully Authed")
+
     }
 
     return (
-        <div className="modal">
-            <div className="modal-content">
+        // <div className="modal">
+        //     <div className="modal-content">
+        <div style={{ textAlign: "center" }}>
+            <div className="rounded-box">
                 <h1>{isLoginForm ? 'Login' : 'Sign Up'}</h1>
                 {/* <span className="exit" onClick={() => {toggleLoginModal()}}>X</span> */}
-                <span className="exit" onClick={() => {navigate(-1)}}>X</span>
                 {isLoginForm ?
                     <div id="loginForm">
-                        <TextFormBox placeholder='username' title='Username' setText={setUsername}/>
-                        <TextFormBox placeholder='password' title='Password' setText={setPassword}/>
-                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(false)}>{"I don't have an account"}</span>
+                        <TextFormBox placeholder='username' title='Username' setText={setUsername} />
+                        <TextFormBox placeholder='password' title='Password' setText={setPassword} />
+                        <span style={{ color: "blue" }} onClick={() => setIsLoginForm(false)}>{"I don't have an account"}</span>
                     </div>
                     :
                     <div className="registrationForm">
-                        <TextFormBox placeholder='username' title='Username' setText={setUsername}/>
-                        <TextFormBox placeholder='password' title='Password' setText={setPassword} checkmark={isMatchingPassword}/>
-                        <TextFormBox placeholder='Verify Password' title='Verify Password' setText={setVerifyPassword} checkmark={isMatchingPassword}/>
-                        <span style={{color: "blue"}} onClick={() => setIsLoginForm(true)}>I have an account</span>
+                        <TextFormBox placeholder='username' title='Username' setText={setUsername} />
+                        <TextFormBox placeholder='password' title='Password' setText={setPassword} checkmark={isMatchingPassword} />
+                        <TextFormBox placeholder='Verify Password' title='Verify Password' setText={setVerifyPassword} checkmark={isMatchingPassword} />
+                        <span style={{ color: "blue" }} onClick={() => setIsLoginForm(true)}>I have an account</span>
                     </div>
                 }
                 <div>
                     <button onClick={loginUser}>Submit</button>
                 </div>
-
             </div>
         </div>
+
+        //     {/* </div>
+        // </div> */}
     )
 }
 

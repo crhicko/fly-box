@@ -1,17 +1,20 @@
 import './Header.css'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { Link, useNavigate} from 'react-router-dom'
+import { useContext, useState } from 'react'
 import {UserContext} from '../../context/UserContext'
 
-const Header = ({toggleLoginModal}) => {
+const Header = () => {
 
     const {user, setUser} = useContext(UserContext)
+    const [loginState, setLoginState] = useState(user)
+    const navigate = useNavigate()
 
     const logoutUser = async () => {
         await fetch('http://localhost:4000/logout', {
             credentials: 'include'
         })
         setUser(null)
+        navigate("/home")
     }
 
     return (
@@ -22,17 +25,18 @@ const Header = ({toggleLoginModal}) => {
             <nav>
                 <ul className="nav_buttons">
                     <li><Link to="/flies">Flies</Link></li>
-                    <li><Link to="/materials">{user?.username}</Link></li>
-                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/materials">Materials</Link></li>
                     <li><a href="s">Kit Builder</a></li>
                 </ul>
             </nav>
             <div className="right-button-box">
+                {user && <h1>{user?.username}</h1>}
                 {user ?
+
                             <button onClick={() => {logoutUser()}}>Logout</button>
                         :
                         <button onClick={() => {
-                            toggleLoginModal()
+                            navigate('/login')
                         }}>Login</button>}
             </div>
         </header>

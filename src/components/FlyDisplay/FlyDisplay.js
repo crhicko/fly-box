@@ -7,11 +7,10 @@ import PropTypes from 'prop-types'
 
 const FlyDisplay = ({ fly }) => {
 
-    const [favorite, setFavorite] = useState(fly.is_favorite)
+    const [favorite, setFavorite] = useState(fly.is_favorite || false)
 
     const {user} = useContext(UserContext)
     const navigate = useNavigate();
-    console.log(fly)
 
     return(
         <div className="card" onClick={() => navigate('/flies/' + fly.id)}>
