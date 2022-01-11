@@ -1,12 +1,10 @@
 header {
-    background-color: slategray;
+    background-color: #2E4756;
     display: flex;
     position: relative;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding-left: 40px;
-    padding-right: 40px;
 }
 
 header > div {
@@ -14,15 +12,9 @@ header > div {
 }
 
 nav {
-    background-color: green;
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: auto;
-}
-
-a {
-    text-decoration: none;
-    color:aliceblue
 }
 
 .logo {
@@ -38,25 +30,20 @@ a {
     padding: 0px 20px;
 }
 
+
 .nav_buttons li a {
     transition: all 0.3s ease 0s;
+    text-decoration: none;
+    color: white;
 }
 
 .nav_buttons li a:hover {
     color: aquamarine;
+    cursor: pointer;
 }
 
 .right-button-box {
-    background-color: red;
     position: relative;
-}
-
-header > * {
-    /* flex-basis: 33%; */
-}
-
-header > :is(div, img) {
-
 }
 
 img {
@@ -66,4 +53,10 @@ img {
 .right-button-box > button {
     position: absolute;
     right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right-button-box > * {
+    margin: 0 10px 0 10px;
 }

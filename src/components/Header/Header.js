@@ -26,18 +26,17 @@ const Header = () => {
                 <ul className="nav_buttons">
                     <li><Link to="/flies">Flies</Link></li>
                     <li><Link to="/materials">Materials</Link></li>
-                    <li><a href="s">Kit Builder</a></li>
+                    <li><Link to="/error">Kit Builder</Link></li>
                 </ul>
             </nav>
             <div className="right-button-box">
                 {user && <h1>{user?.username}</h1>}
                 {user ?
-
-                            <button onClick={() => {logoutUser()}}>Logout</button>
+                            <button className="btn" onClick={() => {logoutUser()}}>Logout</button>
                         :
-                        <button onClick={() => {
+                        <button className="btn" onClick={() => {
                             navigate('/login')
-                        }}>Login</button>}
+                        }}>Log In</button>}
             </div>
         </header>
 
