@@ -8,6 +8,7 @@ import FliesPage from './routes/FliesPage';
 import { UserContext } from './context/UserContext';
 import HomePage from './routes/HomePage';
 import FlyPage from './routes/FlyPage';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
+        <Footer/>
       </BrowserRouter>
     </UserContext.Provider>
   );
