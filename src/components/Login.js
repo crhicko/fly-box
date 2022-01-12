@@ -59,7 +59,7 @@ const Login = () => {
         // <div className="modal">
         //     <div className="modal-content">
         <div style={{ textAlign: "center" }}>
-            <div className="rounded-box">
+            <div className="rounded-box" style={{display: "inline-block"}}>
                 <h1>{isLoginForm ? 'Login' : 'Sign Up'}</h1>
                 {/* <span className="exit" onClick={() => {toggleLoginModal()}}>X</span> */}
                 {isLoginForm ?

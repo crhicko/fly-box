@@ -35,30 +35,11 @@ const FliesPage = () => {
         console.log(data)
       }
 
-      const getUser = async() => {
-        console.log("getting user")
-        const res = await fetch('http://localhost:4000/user', {credentials:  'include'});
-        const data = await res.json();
-
-        console.log(data)
-      }
-
     return(
         <div>
-            <h1> This is the flies page </h1>
-            <img className="logo" src="../public/logo.svg" alt="logo"/>
-
-            <Button onClick={() => {
-            getUser()
-            }}/>
-
-            <div className="FlyFlex">
-            {flies.map((f) => (<FlyDisplay key={f.id} fly={f}/>))}
+            <div className="FlyFlex rounded-box">
+              {flies.map((f) => (<FlyDisplay key={f.id} fly={f}/>))}
             </div>
-
-            <Button onClick={() => {
-            console.log("beans")
-            }}></Button>
 
             <AddFly onAdd={addFly}/>
         </div>
