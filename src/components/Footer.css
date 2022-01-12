@@ -2,7 +2,7 @@
     background-color: #16262E;
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     /* display: flex; */
     transform: translateY(100%);
     /* justify-content: space-between; */
