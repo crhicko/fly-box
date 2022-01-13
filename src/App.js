@@ -36,21 +36,23 @@ function App() {
   }, [])
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <BrowserRouter>
-        <Header/>
-        <div className="centerBox">
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/flies/:id" element={<FlyPage />} />
-            <Route path="/flies" element={<FliesPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </div>
-        <Footer/>
-      </BrowserRouter>
-    </UserContext.Provider>
+    <div className='sizing-wrapper'>
+      <UserContext.Provider value={{ user, setUser }}>
+        <BrowserRouter>
+          <Header/>
+          <div className="centerBox">
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/flies/:id" element={<FlyPage />} />
+              <Route path="/flies" element={<FliesPage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </div>
+          <Footer/>
+        </BrowserRouter>
+      </UserContext.Provider>
+    </div>
   );
 }
 

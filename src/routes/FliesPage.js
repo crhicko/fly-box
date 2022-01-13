@@ -36,13 +36,11 @@ const FliesPage = () => {
       }
 
     return(
-        <div>
-            <div className="FlyFlex rounded-box">
+            <div className="fly-flex rounded-box">
               {flies.map((f) => (<FlyDisplay key={f.id} fly={f}/>))}
             </div>
 
-            <AddFly onAdd={addFly}/>
-        </div>
+            // {/* <AddFly onAdd={addFly}/> */}
     )
 }
 
