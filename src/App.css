@@ -21,9 +21,9 @@ body {
   flex-direction: column;
 }
 
-.centerBox {
-    margin-left: max(10vw, 100px);
-    margin-right: max(10vw, 100px);
+.center-box {
+    margin-left: min(10vw, 100px);
+    margin-right: min(10vw, 100px);
     margin-top: 20px;
     margin-bottom: 20px;
     flex-grow: 1;

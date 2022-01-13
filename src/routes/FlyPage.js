@@ -28,9 +28,9 @@ const FlyPage = () => {
     }, [])
 
     return (
-        <div className="container">
-            {fly ? <div className="topLevel">
-                <div className="leftBox">
+        <div className="rounded-box fly-content">
+            {fly ? <div className="top-level">
+                <div className="left-box">
                     <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic"/>
                     <div className="tagBox">
                         <span className="tag">Nymph</span>

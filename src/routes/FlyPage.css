@@ -1,9 +1,6 @@
-.container {
-    border: 2px black solid;
-    background-color: #1C3144;
-    border-radius: 10px;
+.fly-content {
     color: white;
-    padding: 20px;
+    height: 100%;
 }
 
 /* Gap under the image for some reason */
@@ -13,17 +10,11 @@ img {
     border-radius: 10px;
 }
 
-.topLevel {
-    /* border: 2px green solid; */
-    display: inline-block;
-    /* display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 1fr 1fr; */
+.top-level {
     display: flex;
 }
 
 .info {
-    /* border: 2px green solid; */
     width: 100%;
     overflow: hidden;
     padding: 0px 25px 0px 25px;
@@ -37,8 +28,6 @@ img {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-left: 40px;
-    padding-right: 40px;
 }
 
 .tagBox > .tag {
@@ -52,12 +41,9 @@ img {
     transition: background-color 0.3s ease-in;
 }
 
-
 .iconBox {
-    /* border: 2px solid blue; */
     position: absolute;
     right: 0px;
-    /* display: block; */
 }
 
 .iconBox > *{
@@ -67,4 +53,15 @@ img {
 
 .iconBox i:hover {
     color:antiquewhite;
+}
+
+.left-box > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 900px) {
+    .top-level {
+        flex-direction: column;
+    }
 }

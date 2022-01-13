@@ -40,7 +40,7 @@ function App() {
       <UserContext.Provider value={{ user, setUser }}>
         <BrowserRouter>
           <Header/>
-          <div className="centerBox">
+          <div className="center-box">
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/flies/:id" element={<FlyPage />} />
