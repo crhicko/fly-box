@@ -14,8 +14,8 @@ const Footer = () => {
                 </div>
                 <div className='column'>
                     <h3>Developer Contacts</h3>
-                    <a href="https://github.com/crhicko"><i class="fab fa-github fa-2x"/></a>
-                    <a href="https://www.linkedin.com/in/clayton-hickok-10b2a814a/"><i class="fab fa-linkedin-in fa-2x"/></a>
+                    <a href="https://github.com/crhicko"><i className="fab fa-github fa-2x"/></a>
+                    <a href="https://www.linkedin.com/in/clayton-hickok-10b2a814a/"><i className="fab fa-linkedin-in fa-2x"/></a>
                     {/* <i class="fab fa-github"></i>
                     <i class="fab fa-linkedin-in"></i> */}
                     {/* <ul className='footer-list'>

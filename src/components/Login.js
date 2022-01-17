@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import TextFormBox from './TextFormBox/TextFormBox'
 import { useNavigate } from 'react-router'
 import { UserContext } from '../context/UserContext'
+import { useFormik } from 'formik'
+import { validateUserName, validateLoginPassword } from '../util/Validator'
 import './Login.css'
 
 const Login = () => {
@@ -12,8 +13,27 @@ const Login = () => {
     const [verifyPassword, setVerifyPassword] = useState('')
     const [isLoginForm, setIsLoginForm] = useState(true)
     const [isMatchingPassword, setIsMatchingPassword] = useState(false)
+    const [fetchError, setFetchError] = useState(undefined)
 
     const { user, setUser } = useContext(UserContext)
+
+    const validate = values => {
+        let errors = {}
+        errors = {...validateUserName(values.username), ...errors}
+        errors = {...validateLoginPassword(values.password), ...errors}
+        return errors
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            password: ''
+        },
+        onSubmit: values => {
+            loginUser(values.username, values.password)
+        },
+        validate
+    })
 
     //Registration
     //TODO: Password rules validation
@@ -32,7 +52,8 @@ const Login = () => {
             setIsMatchingPassword(false)
     }, [verifyPassword, password]);
 
-    const loginUser = async () => {
+    const loginUser = async (user, pass) => {
+        setFetchError(undefined)
         const res = await fetch('http://localhost:4000/login', {
             method: 'POST',
             credentials: 'include',
@@ -41,8 +62,8 @@ const Login = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: username,
-                password: password,
+                username: user,
+                password: pass,
             })
         });
         const data = await res.json();
@@ -51,39 +72,36 @@ const Login = () => {
             setUser(data)
             navigate('/flies');
         }
-        // if(data.message === "Successfully Authed")
+        else {
+            setFetchError(data.message);
+        }
 
     }
 
     return (
-        // <div className="modal">
-        //     <div className="modal-content">
-        <div style={{ textAlign: "center" }}>
-            <div className="rounded-box" style={{display: "inline-block"}}>
-                <h1>{isLoginForm ? 'Login' : 'Sign Up'}</h1>
-                {/* <span className="exit" onClick={() => {toggleLoginModal()}}>X</span> */}
-                {isLoginForm ?
-                    <div id="loginForm">
-                        <TextFormBox placeholder='username' title='Username' setText={setUsername} />
-                        <TextFormBox placeholder='password' title='Password' setText={setPassword} />
-                        <span style={{ color: "blue" }} onClick={() => setIsLoginForm(false)}>{"I don't have an account"}</span>
+        <div style={{ textAlign:'center'}}>
+            <div className="rounded-box" style={{width:"max(25vw,300px)", display: "inline-block"}}>
+                <form onSubmit={formik.handleSubmit}>
+                    <div className="form-row">
+                        <h3>Username</h3>
+                        <input id="username" name="username" type="text" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.username}/>
+                        {formik.touched.username && formik.errors.username ? (
+                            <div className='form-error'>{formik.errors.username}</div>
+                        ): null}
                     </div>
-                    :
-                    <div className="registrationForm">
-                        <TextFormBox placeholder='username' title='Username' setText={setUsername} />
-                        <TextFormBox placeholder='password' title='Password' setText={setPassword} checkmark={isMatchingPassword} />
-                        <TextFormBox placeholder='Verify Password' title='Verify Password' setText={setVerifyPassword} checkmark={isMatchingPassword} />
-                        <span style={{ color: "blue" }} onClick={() => setIsLoginForm(true)}>I have an account</span>
+                    <div className="form-row">
+                        <h3>Password</h3>
+                        <input id="password" name="password" type="password" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password}/>
+                        {formik.touched.password && formik.errors.password ? (
+                            <div className='form-error'>{formik.errors.password}</div>
+                        ): null}
+
                     </div>
-                }
-                <div>
-                    <button className="btn" onClick={loginUser}>Submit</button>
-                </div>
+                    <button type="submit">Submit</button>
+                    {fetchError ? <div className='form-error'>{fetchError}</div> : null}
+                </form>
             </div>
         </div>
-
-        //     {/* </div>
-        // </div> */}
     )
 }
 

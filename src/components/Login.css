@@ -33,3 +33,32 @@
 .centered-box {
     text-align: center;
 }
+
+.form-row {
+    color: white;
+}
+
+.form-row > input{
+    width: 260px;
+}
+
+.form-row > h3 {
+    margin: 0;
+
+}
+
+form > * {
+    margin-bottom: 10px;
+}
+
+.form-error {
+    margin-top: 6px;
+    font-weight: 300;
+    color:red;
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 1px solid red;
+    border-radius: 6px;
+    padding: 2px 2px 2px 2px;
+    word-wrap: break-word;
+}
+
