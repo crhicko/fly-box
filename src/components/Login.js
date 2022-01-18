@@ -8,11 +8,7 @@ import './Login.css'
 const Login = () => {
     let navigate = useNavigate()
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [verifyPassword, setVerifyPassword] = useState('')
     const [isLoginForm, setIsLoginForm] = useState(true)
-    const [isMatchingPassword, setIsMatchingPassword] = useState(false)
     const [fetchError, setFetchError] = useState(undefined)
 
     const { user, setUser } = useContext(UserContext)
@@ -80,9 +76,9 @@ const Login = () => {
         })
         const data = await res.json();
         console.log(data)
-        if (data.id) {
+        if (data.message === 'Account Created') {
             setUser(data)
-            navigate('/flies');
+            loginUser(user, pass)
         }
         else {
             setFetchError(data.message);
