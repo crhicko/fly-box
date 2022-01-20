@@ -2,6 +2,8 @@
   display:flex;
   justify-content: space-between;
   height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #root {
@@ -22,18 +24,21 @@ body {
 }
 
 .center-box {
-    margin-left: min(10vw, 100px);
-    margin-right: min(10vw, 100px);
+    margin-left: min(10vw, 80px);
+    margin-right: min(10vw, 80px);
     margin-top: 20px;
     margin-bottom: 20px;
-    flex-grow: 1;
+    height: calc(100vh - 96px);
 }
 
 .rounded-box {
   border-radius: 12px;
-  background-color: #2E4756;
+  background-color: #4E7C97;
   padding: 1em 1em 1em 1em;
+  /* height: calc(100% - 56px); */
+
 }
+/* 2E4756 */
 
 .btn {
   padding: .5rem;
@@ -48,3 +53,22 @@ body {
   background-color: rgba(0, 0, 0, 0);
   cursor:pointer;
 }
+
+
+.styled-scrollbar {
+  scrollbar-color: white rgba(0,0,0,0);
+  scrollbar-width: thin;
+}
+
+.styled-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+  background:white
+}
+
+.styled-scrollbars::-webkit-scrollbar-track { /* Background */
+  background: rgba(0,0,0,0);
+}
+

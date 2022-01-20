@@ -23,7 +23,7 @@ const FavoriteIcon = ( {isFavorite, setFavorite, fly_id} ) => {
     }
 
     return (
-        <div>
+        <div style={{margin: 'auto'}}>
             {isFavorite ? <i className="fas fa-star" onClick={toggleFavorite}/> : <i className="far fa-star" onClick={toggleFavorite}/>}
         </div>
     )

@@ -5,6 +5,7 @@ header {
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    min-height: 56px;
 }
 
 header > div {

@@ -36,7 +36,8 @@ const FliesPage = () => {
       }
 
     return(
-            <div className="fly-flex rounded-box">
+            <div className="fly-grid rounded-box styled-scrollbar" style={{height: "calc(100%)",
+              overflowY: "scroll"}}>
               {flies.map((f) => (<FlyDisplay key={f.id} fly={f}/>))}
             </div>
 
