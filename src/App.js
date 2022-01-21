@@ -21,8 +21,8 @@ function App() {
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      console.log('Checking auth')
-      const res = await fetch('http://localhost:4000/user', {
+      console.log(process.env.REACT_APP_API_URL)
+      const res = await fetch(process.env.REACT_APP_API_URL + '/user', {
         credentials: 'include'
       })
       const data = await res.json();

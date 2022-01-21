@@ -7,7 +7,7 @@ const Register = () => {
 
     const registerUser = async () => {
         console.log("posting")
-        const res = await fetch('http://localhost:4000/register', {
+        const res = await fetch(process.env.REACT_APP_API_URL + '/register', {
             method: 'POST',
             headers: {
             'Accept': 'application/json',

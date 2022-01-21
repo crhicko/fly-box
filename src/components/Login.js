@@ -37,7 +37,7 @@ const Login = () => {
 
     const loginUser = async (user, pass) => {
         setFetchError(undefined)
-        const res = await fetch('http://localhost:4000/login', {
+        const res = await fetch(process.env.REACT_APP_API_URL + '/login', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -61,7 +61,7 @@ const Login = () => {
     }
 
     const registerUser = async (user, pass, email) => {
-        const res = await fetch('http://localhost:4000/register', {
+        const res = await fetch(process.env.REACT_APP_API_URL + '/register', {
             method: 'POST',
             credentials: 'include',
             headers: {

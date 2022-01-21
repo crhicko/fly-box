@@ -14,7 +14,7 @@ const FlyPage = () => {
 
     useEffect(() => {
         const getFly = async () => {
-            const res = await fetch('http://localhost:4000/flies/' + id, {
+            const res = await fetch(process.env.REACT_APP_API_URL + '/flies/' + id, {
                 credentials: 'include'
             })
             const data = await res.json()

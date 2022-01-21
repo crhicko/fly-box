@@ -8,7 +8,7 @@ const HomePage = () => {
 
     useEffect(() => {
         const fetchFlies = async () => {
-            const res = await fetch('http://localhost:4000/flies', {
+            const res = await fetch(process.env.REACT_APP_API_URL + '/flies', {
                 credentials: 'include'
             })
             const data = await res.json()

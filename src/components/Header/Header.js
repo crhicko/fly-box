@@ -10,7 +10,7 @@ const Header = () => {
     const navigate = useNavigate()
 
     const logoutUser = async () => {
-        await fetch('http://localhost:4000/logout', {
+        await fetch(process.env.REACT_APP_API_URL + '/logout', {
             credentials: 'include'
         })
         setUser(null)

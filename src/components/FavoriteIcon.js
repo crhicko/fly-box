@@ -8,7 +8,7 @@ const FavoriteIcon = ( {isFavorite, setFavorite, fly_id} ) => {
     }
 
     const updateFavorite = async(fav) => {
-        const res = await fetch('http://localhost:4000/flies/' + fly_id + '/favorite', {
+        const res = await fetch(process.env.REACT_APP_API_URL + '/flies/' + fly_id + '/favorite', {
             method: 'POST',
             credentials: 'include',
             headers: {
