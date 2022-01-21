@@ -36,12 +36,13 @@ const FliesPage = () => {
       }
 
     return(
-            <div className="fly-grid rounded-box styled-scrollbar" style={{height: "calc(100%)",
-              overflowY: "scroll"}}>
+        <div className="rounded-box styled-scrollbar" style={{height: 'calc(100%)', overflowY: "scroll"}}>
+            {flies.length == 0 ? <p style={{ textAlign: 'center'}}>No Search Results Found</p> :
+            <div className="fly-grid">
               {flies.map((f) => (<FlyDisplay key={f.id} fly={f}/>))}
             </div>
-
-            // {/* <AddFly onAdd={addFly}/> */}
+            }
+        </div>
     )
 }
 
