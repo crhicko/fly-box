@@ -38,6 +38,11 @@ body {
   /* height: calc(100% - 56px); */
 
 }
+
+.full-box {
+  height: '100%';
+  overflow-y: "scroll"
+}
 /* 2E4756 */
 
 .btn {

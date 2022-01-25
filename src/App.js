@@ -9,6 +9,7 @@ import { UserContext } from './context/UserContext';
 import HomePage from './routes/HomePage';
 import FlyPage from './routes/FlyPage';
 import Footer from './components/Footer';
+import AddFlyPage from './routes/AddFlyPage';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
               <Route path="/flies/:id" element={<FlyPage />} />
               <Route path="/flies" element={<FliesPage />} />
               <Route path="/home" element={<HomePage />} />
+              <Route path="/add-fly" element={<AddFlyPage />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>

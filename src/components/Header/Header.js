@@ -25,7 +25,7 @@ const Header = () => {
             <nav>
                 <ul className="nav_buttons">
                     <li><Link to="/flies">Flies</Link></li>
-                    <li><Link to="/materials">Materials</Link></li>
+                    <li><Link to="/add-fly">Add Fly</Link></li>
                     <li><Link to="/error">Kit Builder</Link></li>
                 </ul>
             </nav>

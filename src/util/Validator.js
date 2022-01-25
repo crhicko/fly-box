@@ -41,6 +41,26 @@ export const validateRegistrationPassword = (password, confirm_password) => {
     return errs;
 }
 
+//(array of different fields to check (strings))
+export const validateIsFilled = (fields, values) => {
+    const errs = {}
+
+    fields.forEach((field) => {
+        if (values[field] === '')
+            errs[field] = 'Field is Required'
+    })
+    
+    return errs
+}
+
+export const validateMaxLength = (field, values, num_chars) => {
+    const errs = {}
+
+    if (values[field].length > num_chars)
+        errs[field] = 'Entry too long, must be less than ' + num_chars + ' characters.'
+    return errs
+}
+
 // export const validateUserName = (username) => {
 //     const errors
 //     if (!username)
