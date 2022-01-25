@@ -89,6 +89,7 @@
     margin-right: 8px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 h1 {
