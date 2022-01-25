@@ -98,9 +98,10 @@ h1 {
 
 .fly-description {
     font-weight: 400;
-    /* margin: auto; */
+    width: 100%;
+    margin: auto;
     text-overflow: ellipsis;
-    word-wrap: break-word;
+    word-break: break-all;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
