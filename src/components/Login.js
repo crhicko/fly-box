@@ -75,9 +75,9 @@ const Login = () => {
             })
         })
         const data = await res.json();
-        console.log(data)
-        if (data.message === 'Account Created') {
-            setUser(data)
+        // console.log(data)
+        if (data.id) {
+            // setUser(data.id)
             loginUser(user, pass)
         }
         else {

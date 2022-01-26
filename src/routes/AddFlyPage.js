@@ -5,7 +5,7 @@ import { validateIsFilled, validateMaxLength } from "../util/Validator";
 const AddFlyPage = () => {
 
     const addFlyToDB = async (fly) => {
-        const res = await fetch(process.env.REACT_APP_API_URL + '/add-fly', {
+        const res = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
             method: 'POST',
             credentials: 'include',
             headers: {
