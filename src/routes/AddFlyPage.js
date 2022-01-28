@@ -1,21 +1,22 @@
 import { useFormik } from "formik";
 import { validateIsFilled, validateMaxLength } from "../util/Validator";
-
+import { useState } from 'react'
 
 const AddFlyPage = () => {
 
-    const addFlyToDB = async (fly) => {
+    const [imageURL, setImageURL] = useState()
+
+    const addFlyToDB = async (data) => {
+        //have to use formdata object instead of just enctype
+        const formData = new FormData()
+        for(const name in data) {
+            formData.append(name, data[name])
+        };
+
         const res = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
             method: 'POST',
             credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: fly.name,
-                description: fly.description,
-            })
+            body: formData
         })
     }
 
@@ -31,8 +32,8 @@ const AddFlyPage = () => {
     const formik = useFormik({
         initialValues: {
         name: '',
-        description: ''
-
+        description: '',
+        image: ''
     },
     onSubmit: values => {
         addFlyToDB(values)
@@ -40,9 +41,10 @@ const AddFlyPage = () => {
     validate
     })
 
+
     return (
         <section className="rounded-box full-box styled-scrollbar">
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
                 <div className="form-row">
                     <h3>Name</h3>
                     <input id="name" name="name" type="text" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name}/>
@@ -57,7 +59,20 @@ const AddFlyPage = () => {
                         <div className='form-error'>{formik.errors.description}</div>
                     ): null}
                 </div>
-                <button type="submit">Submit</button>
+                <div className="form-row">
+                    {imageURL && <img src={imageURL}></img>}
+                    <h3>Image</h3>
+                    <input id="image" name="image" type="file" accept='image/*' onChange={(e) => {
+                        setImageURL(URL.createObjectURL(e.target.files[0]))
+                        //formik doesnt natively handle file upload so you need to manually change the field value in formik
+                        formik.setFieldValue("image", e.target.files[0])
+                    }}/>
+                    {formik.touched.description && formik.errors.description ? (
+                        <div className='form-error'>{formik.errors.description}</div>
+                    ): null}
+                </div>
+
+                <button className="btn" type="submit">Submit</button>
             </form>
         </section>
     )
