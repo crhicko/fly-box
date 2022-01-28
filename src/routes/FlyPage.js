@@ -2,7 +2,7 @@ import { useParams } from "react-router"
 import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../context/UserContext"
 import './FlyPage.css'
-import Loader from "../util/Loader"
+import Loader from "../util/Loader/Loader"
 import FavoriteIcon from "../components/FavoriteIcon"
 
 const FlyPage = () => {
