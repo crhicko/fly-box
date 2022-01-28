@@ -24,22 +24,6 @@ const FliesPage = () => {
         fetchFlies()
       }, [])
 
-
-      const addFly = async (fly) => {
-        console.log("posting")
-        const res = await fetch(process.env.REACT_APP_API_URL + 'flies', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(fly)
-        });
-        const data = await res.json();
-
-        console.log(data)
-      }
-
     return(
         <div className="rounded-box styled-scrollbar" style={{height: '100%', overflowY: "scroll"}}>
             {reqFinished ?
