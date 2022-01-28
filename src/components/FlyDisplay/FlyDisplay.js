@@ -14,7 +14,8 @@ const FlyDisplay = ({ fly }) => {
 
     return (
         <div className="card-horizontal" onClick={() => navigate('/flies/' + fly.id)}>
-            <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic" />
+            <img src={fly.image_url} alt="Fly Pic"/>
+            {/* <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic" /> */}
             <div className="info-horizontal">
                 <h1>{fly.name}</h1>
 
