@@ -41,6 +41,7 @@
     color: #F4C3C2;
     transition: color 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out;
+    cursor: pointer
 }
 
 .tag:hover {
@@ -48,6 +49,30 @@
     color: #004D66;
     border: 2px solid #004D66;
 }
+
+.tag.disabled {
+    border-color: slategrey;
+    background-color: rgba(119, 119, 119, 0.3);
+    color: #ffffff
+}
+
+.tag.disabled:hover {
+    background-color: #F4C3C2;
+    color: #004D66;
+    border: 2px solid #004D66;
+}
+
+/* .tag.enabled {
+    background-color: #F4C3C2;
+    color: #004D66;
+    border: 2px solid #004D66;
+}
+
+.tag.enabled:hover {
+    background-color: #F4C3C2;
+    color: #004D66;
+    border: 2px solid #004D66;
+} */
 
 
 .favorite {
