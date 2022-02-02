@@ -1,10 +1,20 @@
 import { useFormik } from "formik";
 import { validateIsFilled, validateMaxLength } from "../util/Validator";
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { getTags } from '../api/tags'
+import Tag from "../components/Tag/Tag";
 
 const AddFlyPage = () => {
 
     const [imageURL, setImageURL] = useState()
+    const [tags, setTags] = useState([])
+
+    const selectedTags = useRef(new Set())
+
+    useEffect(async () => {
+        setTags(await getTags())
+        // allTags = [...allTags, ...await getTags()]
+    }, [])
 
     const addFlyToDB = async (data) => {
         //have to use formdata object instead of just enctype
@@ -12,6 +22,9 @@ const AddFlyPage = () => {
         for(const name in data) {
             formData.append(name, data[name])
         };
+        for(const tag of selectedTags.current) {
+            formData.append('tags', tag.id)
+        }
 
         const res = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
             method: 'POST',
@@ -71,7 +84,11 @@ const AddFlyPage = () => {
                         <div className='form-error'>{formik.errors.description}</div>
                     ): null}
                 </div>
-
+                <div className="form-row">
+                    <div className=''>
+                        {tags.map((tag, index) => <Tag text={tag.title} enabled={false} key={index} onToggle={e => {e ? selectedTags.current.add({title: tag.title, id: tag.id}) : selectedTags.current.delete({title: tag.title, id: tag.id})}}/>)}
+                    </div>
+                </div>
                 <button className="btn" type="submit">Submit</button>
             </form>
         </section>
