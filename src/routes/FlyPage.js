@@ -34,7 +34,7 @@ const FlyPage = () => {
                     <img src={fly.image_url} alt="Fly Pic"/>
                     {/* <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic"/> */}
                     <div className="tagBox">
-                        {fly.tag_list.split(',').map((tag, index) => <Tag text={tag} key={index}/>)}
+                        {fly.tag_list.split(',').map((tag, index) => <Tag text={tag} key={index} interactable={false}/>)}
                     </div>
                 </div>
                 <div className="info">
