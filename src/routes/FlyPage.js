@@ -4,6 +4,7 @@ import { UserContext } from "../context/UserContext"
 import './FlyPage.css'
 import Loader from "../util/Loader/Loader"
 import FavoriteIcon from "../components/FavoriteIcon"
+import Tag from "../components/Tag/Tag"
 
 const FlyPage = () => {
     const [fly, setFly] = useState(null)
@@ -20,7 +21,6 @@ const FlyPage = () => {
             const data = await res.json()
             console.log(data)
             setFly(data)
-            console.log(data.is_favorite)
             if(data.is_favorite === true)
                 setFavorite(true)
         }
@@ -34,13 +34,7 @@ const FlyPage = () => {
                     <img src={fly.image_url} alt="Fly Pic"/>
                     {/* <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic"/> */}
                     <div className="tagBox">
-                        <span className="tag">Nymph</span>
-                        <span className="tag">Nymph</span>
-                        <span className="tag">Nymph</span>
-                        <span className="tag">Nymph</span>
-                        <span className="tag">Nymph</span>
-                        <span className="tag">Nymph</span>
-                        <span className="tag">Nymph</span>
+                        {fly.tag_list.split(',').map((tag, index) => <Tag text={tag} key={index}/>)}
                     </div>
                 </div>
                 <div className="info">
