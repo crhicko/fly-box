@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../context/UserContext"
 import './FlyPage.css'
 import Loader from "../util/Loader/Loader"
-import FavoriteIcon from "../components/FavoriteIcon"
+import FavoriteIcon from "../components/FavoriteIcon/FavoriteIcon"
 import Tag from "../components/Tag/Tag"
 
 const FlyPage = () => {
@@ -34,7 +34,7 @@ const FlyPage = () => {
                     <img src={fly.image_url} alt="Fly Pic"/>
                     {/* <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic"/> */}
                     <div className="tagBox">
-                        {fly.tag_list.split(',').map((tag, index) => <Tag text={tag} key={index} interactable={false}/>)}
+                        {fly.tag_list && fly.tag_list.split(',').map((tag, index) => <Tag text={tag} key={index} interactable={false}/>)}
                     </div>
                 </div>
                 <div className="info">

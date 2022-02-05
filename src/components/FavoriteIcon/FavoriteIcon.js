@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import { UserContext } from '../../context/UserContext'
 
 const FavoriteIcon = ( {isFavorite, setFavorite, fly_id} ) => {
 
+    const {user} = useContext(UserContext)
+
     const toggleFavorite = () => {
+        if(!user) return
         updateFavorite(!isFavorite)
         setFavorite(!isFavorite)
     }
@@ -21,10 +26,10 @@ const FavoriteIcon = ( {isFavorite, setFavorite, fly_id} ) => {
         })
         console.log(await res.json())
     }
-
+    console.log(user)
     return (
         <div style={{margin: 'auto'}}>
-            {isFavorite ? <i className="fas fa-star" onClick={toggleFavorite}/> : <i className="far fa-star" onClick={toggleFavorite}/>}
+            <i className={`${isFavorite ? 'fas' : 'far'} fa-star`} onClick={toggleFavorite} style={{cursor: 'pointer'}}/>
         </div>
     )
 }

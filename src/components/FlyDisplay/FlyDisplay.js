@@ -2,7 +2,7 @@ import './FlyDisplay.css'
 import { useState, useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
-import FavoriteIcon from '../FavoriteIcon'
+import FavoriteIcon from '../FavoriteIcon/FavoriteIcon'
 import PropTypes from 'prop-types'
 import Tag from '../Tag/Tag'
 
