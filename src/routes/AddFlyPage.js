@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import { validateIsFilled, validateMaxLength } from "../util/Validator";
 import { useState, useEffect, useRef } from 'react'
 import { getTags } from '../api/tags'
+import ResponsiveSearch from "../components/ResponsiveSearch/ResponsiveSearch";
 import Tag from "../components/Tag/Tag";
 
 const AddFlyPage = () => {
@@ -88,6 +89,9 @@ const AddFlyPage = () => {
                     <div className=''>
                         {tags.map((tag, index) => <Tag text={tag.title} enabled={false} key={index} onToggle={e => {e ? selectedTags.current.add({title: tag.title, id: tag.id}) : selectedTags.current.delete({title: tag.title, id: tag.id})}}/>)}
                     </div>
+                </div>
+                <div className="form-row">
+                    <ResponsiveSearch/>
                 </div>
                 <button className="btn" type="submit">Submit</button>
             </form>
