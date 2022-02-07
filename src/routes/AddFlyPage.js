@@ -4,11 +4,14 @@ import { useState, useEffect, useRef } from 'react'
 import { getTags } from '../api/tags'
 import ResponsiveSearch from "../components/ResponsiveSearch/ResponsiveSearch";
 import Tag from "../components/Tag/Tag";
+import FlyDisplay from "../components/FlyDisplay/FlyDisplay";
 
 const AddFlyPage = () => {
 
     const [imageURL, setImageURL] = useState()
     const [tags, setTags] = useState([])
+    const [searchResults, setSearchResults] = useState([])
+    const [selectedVariant, setSelectedVariant] = useState(null)
 
     const selectedTags = useRef(new Set())
 
@@ -91,7 +94,10 @@ const AddFlyPage = () => {
                     </div>
                 </div>
                 <div className="form-row">
-                    <ResponsiveSearch/>
+                    <h3>Variant</h3>
+                    <ResponsiveSearch setSearchResults={setSearchResults}/>
+                    {searchResults.length ? searchResults.map((fly, index) => <h6 onClick={() => setSelectedVariant(fly)} key={index}>{fly.name}</h6>) : null}
+                    {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
                 </div>
                 <button className="btn" type="submit">Submit</button>
             </form>

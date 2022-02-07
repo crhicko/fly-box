@@ -1,22 +1,22 @@
 import './ResponsiveSearch.css'
 import { useState, useCallback, useEffect, useRef } from 'react'
 import useDidUpdateEffect from '../../util/useDidUpdateEffect'
+import PropTypes from 'prop-types'
 
 
-
-const ResponsiveSearch = ({}) => {
+const ResponsiveSearch = ({setSearchResults}) => {
 
     // const controller = useRef(new AbortController())
 
-    const getSearchResults = async (text) => {
+    const getSearchResults = async (text ) => {
 
         const controller = new AbortController()
         if(activeAbortController.current !== null) {
             console.log("Aborting the request", activeAbortController.current)
             activeAbortController.current.abort()
-        }   
+        }
         activeAbortController.current = controller
-        
+
         console.log("Call to get search results")
         try {
             const res = await fetch(process.env.REACT_APP_API_URL + '/flies?search=' + text, {
@@ -26,7 +26,7 @@ const ResponsiveSearch = ({}) => {
             console.log(res)
             console.log(controller)
             if(res.body) {
-                const data = await res.json() 
+                const data = await res.json()
                 console.log(data)
                 setSearchResults(data)
             }
@@ -39,7 +39,7 @@ const ResponsiveSearch = ({}) => {
     }
 
     const [search, setSearch] = useState('')
-    const [searchResults, setSearchResults] = useState([])
+    // const [searchResults, setSearchResults] = useState([])
     const activeAbortController = useRef(null)
     const apiCallCB = useCallback(debounce(getSearchResults), [])
 
@@ -75,5 +75,10 @@ const ResponsiveSearch = ({}) => {
         </div>
     )
 }
+
+ResponsiveSearch.propTypes = {
+    setSearchResults: PropTypes.func.isRequired
+}
+
 
 export default ResponsiveSearch
