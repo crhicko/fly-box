@@ -1,27 +1,37 @@
 import './ResponsiveSearch.css'
 import { useState, useCallback, useEffect, useRef } from 'react'
+import useDidUpdateEffect from '../../util/useDidUpdateEffect'
 
 const ResponsiveSearch = ({}) => {
 
     const getSearchResults = async (text) => {
+        console.log("Call to get search results")
         const res = await fetch(process.env.REACT_APP_API_URL + '/flies?search=' + text, {
             method: 'GET',
             signal: controller.signal
         })
-        console.log(await res.json())
+        console.log(res)
+        if(res.body)
+            console.log(await res.json())
     }
 
     const [search, setSearch] = useState('')
     const [searchResults, setSearchResults] = useState([])
-    // const apiCall = useRef(() => debounce(fakeFunc))
+    // const apiCall = useRef(debounce(text => getSearchResults(text)))
     const controller = useRef(new AbortController())
+    // const cb = useCallback(fakeCB(() => console.log("ballsack")), [])
     const apiCallCB = useCallback(debounce(getSearchResults), [])
 
     const updateSearch = (text) => {
         setSearch(text)
     }
 
-    useEffect(() => {
+    useDidUpdateEffect(() => {
+        // console.log(apiCallCB)
+        // console.log(cb)
+        // console.log(a)
+        // a()
+        // console.log(apiCall.current)
         apiCallCB(search)
     }, [search])
 
@@ -35,10 +45,7 @@ const ResponsiveSearch = ({}) => {
 
     function debounce(func, timeout = 300) {
         let timer;
-        console.log('here3')
-        console.log(func)
         return (...args) => {
-            console.log("here2")
             clearTimeout(timer)
             timer = setTimeout(() => {func.apply(this, args)}, timeout)
         }
