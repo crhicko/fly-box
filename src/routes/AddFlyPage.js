@@ -5,6 +5,7 @@ import { getTags } from '../api/tags'
 import ResponsiveSearch from "../components/ResponsiveSearch/ResponsiveSearch";
 import Tag from "../components/Tag/Tag";
 import FlyDisplay from "../components/FlyDisplay/FlyDisplay";
+import useDidUpdateEffect from "../util/useDidUpdateEffect";
 
 const AddFlyPage = () => {
 
@@ -20,6 +21,10 @@ const AddFlyPage = () => {
         // allTags = [...allTags, ...await getTags()]
     }, [])
 
+    useDidUpdateEffect(() => {
+        formik.setFieldValue("variant", selectedVariant.id)
+    }, [selectedVariant])
+
     const addFlyToDB = async (data) => {
         //have to use formdata object instead of just enctype
         const formData = new FormData()
@@ -29,7 +34,10 @@ const AddFlyPage = () => {
         for(const tag of selectedTags.current) {
             formData.append('tags', tag.id)
         }
-
+        // for(let value of formData.values()) {
+        //     console.log(value)
+        // }
+        // console.log(formData.entries().fo)
         const res = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
             method: 'POST',
             credentials: 'include',
@@ -50,7 +58,8 @@ const AddFlyPage = () => {
         initialValues: {
         name: '',
         description: '',
-        image: ''
+        image: '',
+        variant: ''
     },
     onSubmit: values => {
         addFlyToDB(values)
