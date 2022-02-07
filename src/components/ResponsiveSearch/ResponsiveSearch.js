@@ -2,24 +2,45 @@ import './ResponsiveSearch.css'
 import { useState, useCallback, useEffect, useRef } from 'react'
 import useDidUpdateEffect from '../../util/useDidUpdateEffect'
 
+
+
 const ResponsiveSearch = ({}) => {
 
+    // const controller = useRef(new AbortController())
+
     const getSearchResults = async (text) => {
+
+        const controller = new AbortController()
+        if(activeAbortController.current !== null) {
+            console.log("Aborting the request", activeAbortController.current)
+            activeAbortController.current.abort()
+        }   
+        activeAbortController.current = controller
+        
         console.log("Call to get search results")
-        const res = await fetch(process.env.REACT_APP_API_URL + '/flies?search=' + text, {
-            method: 'GET',
-            signal: controller.signal
-        })
-        console.log(res)
-        if(res.body)
-            console.log(await res.json())
+        try {
+            const res = await fetch(process.env.REACT_APP_API_URL + '/flies?search=' + text, {
+                method: 'GET',
+                signal: controller.signal
+            })
+            console.log(res)
+            console.log(controller)
+            if(res.body) {
+                const data = await res.json() 
+                console.log(data)
+                setSearchResults(data)
+            }
+        }
+        catch(err) {
+            if(err && err.name === 'AbortError')
+                console.log(err)
+        }
+        activeAbortController.current = null
     }
 
     const [search, setSearch] = useState('')
     const [searchResults, setSearchResults] = useState([])
-    // const apiCall = useRef(debounce(text => getSearchResults(text)))
-    const controller = useRef(new AbortController())
-    // const cb = useCallback(fakeCB(() => console.log("ballsack")), [])
+    const activeAbortController = useRef(null)
     const apiCallCB = useCallback(debounce(getSearchResults), [])
 
     const updateSearch = (text) => {
@@ -27,11 +48,6 @@ const ResponsiveSearch = ({}) => {
     }
 
     useDidUpdateEffect(() => {
-        // console.log(apiCallCB)
-        // console.log(cb)
-        // console.log(a)
-        // a()
-        // console.log(apiCall.current)
         apiCallCB(search)
     }, [search])
 
@@ -43,7 +59,7 @@ const ResponsiveSearch = ({}) => {
     //Debounce: function that has a timer associated and executes upon time completing, but can also be cancelled by a new input
 
 
-    function debounce(func, timeout = 300) {
+    function debounce(func, timeout = 600) {
         let timer;
         return (...args) => {
             clearTimeout(timer)
