@@ -2,12 +2,17 @@ import { useFormik } from "formik";
 import { validateIsFilled, validateMaxLength } from "../util/Validator";
 import { useState, useEffect, useRef } from 'react'
 import { getTags } from '../api/tags'
+import ResponsiveSearch from "../components/ResponsiveSearch/ResponsiveSearch";
 import Tag from "../components/Tag/Tag";
+import FlyDisplay from "../components/FlyDisplay/FlyDisplay";
+import useDidUpdateEffect from "../util/useDidUpdateEffect";
 
 const AddFlyPage = () => {
 
     const [imageURL, setImageURL] = useState()
     const [tags, setTags] = useState([])
+    const [searchResults, setSearchResults] = useState([])
+    const [selectedVariant, setSelectedVariant] = useState(null)
 
     const selectedTags = useRef(new Set())
 
@@ -15,6 +20,10 @@ const AddFlyPage = () => {
         setTags(await getTags())
         // allTags = [...allTags, ...await getTags()]
     }, [])
+
+    useDidUpdateEffect(() => {
+        formik.setFieldValue("variant", selectedVariant.id)
+    }, [selectedVariant])
 
     const addFlyToDB = async (data) => {
         //have to use formdata object instead of just enctype
@@ -25,7 +34,10 @@ const AddFlyPage = () => {
         for(const tag of selectedTags.current) {
             formData.append('tags', tag.id)
         }
-
+        // for(let value of formData.values()) {
+        //     console.log(value)
+        // }
+        // console.log(formData.entries().fo)
         const res = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
             method: 'POST',
             credentials: 'include',
@@ -46,7 +58,8 @@ const AddFlyPage = () => {
         initialValues: {
         name: '',
         description: '',
-        image: ''
+        image: '',
+        variant: ''
     },
     onSubmit: values => {
         addFlyToDB(values)
@@ -88,6 +101,12 @@ const AddFlyPage = () => {
                     <div className=''>
                         {tags.map((tag, index) => <Tag text={tag.title} enabled={false} key={index} onToggle={e => {e ? selectedTags.current.add({title: tag.title, id: tag.id}) : selectedTags.current.delete({title: tag.title, id: tag.id})}}/>)}
                     </div>
+                </div>
+                <div className="form-row">
+                    <h3>Variant</h3>
+                    <ResponsiveSearch setSearchResults={setSearchResults}/>
+                    {searchResults.length ? searchResults.map((fly, index) => <h6 onClick={() => setSelectedVariant(fly)} key={index}>{fly.name}</h6>) : null}
+                    {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
                 </div>
                 <button className="btn" type="submit">Submit</button>
             </form>

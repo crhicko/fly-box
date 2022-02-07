@@ -6,15 +6,19 @@ import FavoriteIcon from '../FavoriteIcon/FavoriteIcon'
 import PropTypes from 'prop-types'
 import Tag from '../Tag/Tag'
 
-const FlyDisplay = ({ fly }) => {
+const FlyDisplay = ({ fly, handleClick, className }) => {
 
     const [favorite, setFavorite] = useState(fly.is_favorite || false)
 
     const { user } = useContext(UserContext)
     const navigate = useNavigate();
 
+    console.log(handleClick)
+    if(handleClick === null)
+        handleClick= () => navigate('/flies/' + fly.id)
+
     return (
-        <div className="card-horizontal" onClick={() => navigate('/flies/' + fly.id)}>
+        <div className={`card-horizontal ${className}`} onClick={handleClick}>
             <img src={fly.image_url} alt="Fly Pic"/>
             {/* <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic" /> */}
             <div className="info-horizontal">
@@ -37,9 +41,14 @@ const FlyDisplay = ({ fly }) => {
     )
 }
 
-
 FlyDisplay.propTypes = {
-    fly: PropTypes.object.isRequired
+    fly: PropTypes.object.isRequired,
+    handleClick: PropTypes.func,
+    className: PropTypes.string
+}
+
+FlyDisplay.defaultProps = {
+    handleClick: null
 }
 
 export default FlyDisplay
