@@ -28,7 +28,7 @@ const FlyDisplay = ({ fly, handleClick, className }) => {
                 <p className='fly-description'>{fly.description}</p>
                 <div className='bottom-row'>
                     <div className='icon-box'>
-                        {(fly.user_id === user?.id) && <button>Edit</button>}
+                        {/* {(fly.user_id === user?.id) && <button>Edit</button>} */}
                         <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id} />
                     </div>
                     <span className='divider-bar'/>

@@ -63,18 +63,21 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
 }
 
 h1 {
     margin: 4px 0 4px 0;
+    text-overflow: ellipsis;
 }
 
 .fly-description {
     font-weight: 400;
     width: 100%;
+    /* height: 100%; */
     margin: auto;
     text-overflow: ellipsis;
-    word-break: break-all;
+    word-break:normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
