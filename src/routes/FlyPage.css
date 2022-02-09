@@ -67,7 +67,11 @@ img {
 }
 
 .fly-grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 20px; */
 }
+
