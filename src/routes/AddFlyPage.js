@@ -16,6 +16,33 @@ const AddFlyPage = () => {
 
     const selectedTags = useRef(new Set())
 
+    const valuesRef = useRef()
+
+
+
+    const validate = values => {
+        let errors = {};
+        console.log(values)
+        // errors = {...validateFlyName(values.name), ...errors}
+        errors = {...validateIsFilled(['name', 'description'] , values), ...errors}
+        errors = {...validateMaxLength('name', values, 60), ...errors}
+        console.log(errors)
+        return errors
+    }
+
+    const formik = useFormik({
+        initialValues: {
+        name: '',
+        description: '',
+        image: '',
+        variant: ''
+    },
+    onSubmit: values => {
+        addFlyToDB(values)
+    },
+    validate
+    })
+
     useEffect(async () => {
         setTags(await getTags())
         // allTags = [...allTags, ...await getTags()]
@@ -24,6 +51,23 @@ const AddFlyPage = () => {
     useDidUpdateEffect(() => {
         formik.setFieldValue("variant", selectedVariant.id)
     }, [selectedVariant])
+
+    useEffect(() => {
+
+        const storage = window.sessionStorage;
+        if(storage.getItem('values')) {
+            formik.setValues(JSON.parse(storage.getItem('values')))
+        }
+
+        return function cleanup() {
+            console.log(valuesRef.current)
+            storage.setItem('values', JSON.stringify(valuesRef.current))
+        }
+    }, [])
+
+    useEffect(() => {
+        valuesRef.current = formik.values
+    }, [formik.values])
 
     const addFlyToDB = async (data) => {
         //have to use formdata object instead of just enctype
@@ -45,27 +89,9 @@ const AddFlyPage = () => {
         })
     }
 
-    const validate = values => {
-        let errors = {};
-        // errors = {...validateFlyName(values.name), ...errors}
-        errors = {...validateIsFilled(['name', 'description'] , values), ...errors}
-        errors = {...validateMaxLength('name', values, 60), ...errors}
-        console.log(errors)
-        return errors
-    }
 
-    const formik = useFormik({
-        initialValues: {
-        name: '',
-        description: '',
-        image: '',
-        variant: ''
-    },
-    onSubmit: values => {
-        addFlyToDB(values)
-    },
-    validate
-    })
+
+
 
     const handleVariantSearchClick = (fly) => {
         setSelectedVariant(fly)
