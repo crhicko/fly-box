@@ -67,9 +67,14 @@ const AddFlyPage = () => {
     validate
     })
 
+    const handleVariantSearchClick = (fly) => {
+        setSelectedVariant(fly)
+        setSearchResults([])
+    }
+
 
     return (
-        <section className="rounded-box full-box styled-scrollbar">
+        <section className="rounded-box full-box styled-scrollbar scrollable">
             <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
                 <div className="form-row">
                     <h3>Name</h3>
@@ -105,8 +110,12 @@ const AddFlyPage = () => {
                 <div className="form-row">
                     <h3>Variant</h3>
                     <ResponsiveSearch setSearchResults={setSearchResults}/>
-                    {searchResults.length ? searchResults.map((fly, index) => <h6 onClick={() => setSelectedVariant(fly)} key={index}>{fly.name}</h6>) : null}
-                    {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
+                    <div className="rounded-box fly-grid" style={{gap: '12px'}}>
+                        {searchResults.length ? searchResults.map((fly, index) => <FlyDisplay fly={fly} handleClick={() => handleVariantSearchClick(fly)} key={index}/>) : null}
+                    </div>
+                    <div style={{maxWidth: '400px'}}>
+                        {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
+                    </div>
                 </div>
                 <button className="btn" type="submit">Submit</button>
             </form>
