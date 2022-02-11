@@ -25,7 +25,7 @@ const FliesPage = () => {
       }, [])
 
     return(
-        <div className="rounded-box styled-scrollbar" style={{height: '100%', overflowY: "scroll"}}>
+        <div className="rounded-box styled-scrollbar scrollable" style={{height: '100%'}}>
             {reqFinished ?
             (flies.length == 0 ? <p style={{ textAlign: 'center'}}>No Search Results Found</p> :
             <div className="fly-grid">

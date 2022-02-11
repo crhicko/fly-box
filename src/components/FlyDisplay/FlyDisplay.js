@@ -18,7 +18,7 @@ const FlyDisplay = ({ fly, handleClick, className }) => {
         handleClick= () => navigate('/flies/' + fly.id)
 
     return (
-        <div className={`card-horizontal ${className}`} onClick={handleClick}>
+        <div className={`card ${className ? className : ''}`} onClick={handleClick}>
             <img src={fly.image_url} alt="Fly Pic"/>
             {/* <img src="https://cdn11.bigcommerce.com/s-gozd41z4b7/images/stencil/1280x1280/products/456/1025/BH_Trip_Saver__92913.1574435303.jpg?c=1" alt="Fly Pic" /> */}
             <div className="info-horizontal">
@@ -28,7 +28,7 @@ const FlyDisplay = ({ fly, handleClick, className }) => {
                 <p className='fly-description'>{fly.description}</p>
                 <div className='bottom-row'>
                     <div className='icon-box'>
-                        {(fly.user_id === user?.id) && <button>Edit</button>}
+                        {/* {(fly.user_id === user?.id) && <button>Edit</button>} */}
                         <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id} />
                     </div>
                     <span className='divider-bar'/>

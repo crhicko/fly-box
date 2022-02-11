@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import PropTypes from 'prop-types'
+import './Tag.css'
 
 const Tag = ({ text, enabled, onToggle, interactable }) => {
     const [isEnabled, setIsEnabled] = useState(enabled)

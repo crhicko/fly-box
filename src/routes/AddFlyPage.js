@@ -16,6 +16,33 @@ const AddFlyPage = () => {
 
     const selectedTags = useRef(new Set())
 
+    const valuesRef = useRef()
+
+
+
+    const validate = values => {
+        let errors = {};
+        console.log(values)
+        // errors = {...validateFlyName(values.name), ...errors}
+        errors = {...validateIsFilled(['name', 'description'] , values), ...errors}
+        errors = {...validateMaxLength('name', values, 60), ...errors}
+        console.log(errors)
+        return errors
+    }
+
+    const formik = useFormik({
+        initialValues: {
+        name: '',
+        description: '',
+        image: '',
+        variant: ''
+    },
+    onSubmit: values => {
+        addFlyToDB(values)
+    },
+    validate
+    })
+
     useEffect(async () => {
         setTags(await getTags())
         // allTags = [...allTags, ...await getTags()]
@@ -24,6 +51,23 @@ const AddFlyPage = () => {
     useDidUpdateEffect(() => {
         formik.setFieldValue("variant", selectedVariant.id)
     }, [selectedVariant])
+
+    useEffect(() => {
+
+        const storage = window.sessionStorage;
+        if(storage.getItem('values')) {
+            formik.setValues(JSON.parse(storage.getItem('values')))
+        }
+
+        return function cleanup() {
+            console.log(valuesRef.current)
+            storage.setItem('values', JSON.stringify(valuesRef.current))
+        }
+    }, [])
+
+    useEffect(() => {
+        valuesRef.current = formik.values
+    }, [formik.values])
 
     const addFlyToDB = async (data) => {
         //have to use formdata object instead of just enctype
@@ -45,31 +89,18 @@ const AddFlyPage = () => {
         })
     }
 
-    const validate = values => {
-        let errors = {};
-        // errors = {...validateFlyName(values.name), ...errors}
-        errors = {...validateIsFilled(['name', 'description'] , values), ...errors}
-        errors = {...validateMaxLength('name', values, 60), ...errors}
-        console.log(errors)
-        return errors
-    }
 
-    const formik = useFormik({
-        initialValues: {
-        name: '',
-        description: '',
-        image: '',
-        variant: ''
-    },
-    onSubmit: values => {
-        addFlyToDB(values)
-    },
-    validate
-    })
+
+
+
+    const handleVariantSearchClick = (fly) => {
+        setSelectedVariant(fly)
+        setSearchResults([])
+    }
 
 
     return (
-        <section className="rounded-box full-box styled-scrollbar">
+        <section className="rounded-box full-box styled-scrollbar scrollable">
             <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
                 <div className="form-row">
                     <h3>Name</h3>
@@ -105,8 +136,12 @@ const AddFlyPage = () => {
                 <div className="form-row">
                     <h3>Variant</h3>
                     <ResponsiveSearch setSearchResults={setSearchResults}/>
-                    {searchResults.length ? searchResults.map((fly, index) => <h6 onClick={() => setSelectedVariant(fly)} key={index}>{fly.name}</h6>) : null}
-                    {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
+                    <div className="rounded-box fly-grid" style={{gap: '12px'}}>
+                        {searchResults.length ? searchResults.map((fly, index) => <FlyDisplay fly={fly} handleClick={() => handleVariantSearchClick(fly)} key={index}/>) : null}
+                    </div>
+                    <div style={{maxWidth: '400px'}}>
+                        {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
+                    </div>
                 </div>
                 <button className="btn" type="submit">Submit</button>
             </form>
