@@ -26,13 +26,13 @@ const Register = () => {
 
 
     return (
-        <div>
+        <>
             <h1>Register</h1>
             <input placeholder='email' onChange={(e) => setRegisterEmail(e.target.value)}/>
             <input placeholder='username' onChange={(e) => setRegisterUsername(e.target.value)}/>
             <input placeholder='password' onChange={(e) => setRegisterPassword(e.target.value)}/>
             <button onClick={registerUser}>Submit</button>
-        </div>
+        </>
     )
 }
 

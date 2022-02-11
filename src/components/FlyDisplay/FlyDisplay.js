@@ -13,7 +13,6 @@ const FlyDisplay = ({ fly, handleClick, className }) => {
     const { user } = useContext(UserContext)
     const navigate = useNavigate();
 
-    console.log(handleClick)
     if(handleClick === null)
         handleClick= () => navigate('/flies/' + fly.id)
 
