@@ -31,9 +31,13 @@ const Header = () => {
                 </ul>
             </nav>
             <div className="right-button-box">
-                {user && <h1>{user?.username}</h1>}
                 {user ?
-                            <button className="btn" onClick={() => {logoutUser()}}>Logout</button>
+                    <>
+                        <button className="btn user-button" onClick={() => navigate(`/users/${user.username}`)}>
+                            <h3>{user?.username}</h3>
+                            <i className="far fa-user fa-lg"/>
+                        </button>
+                    </>
                         :
                         <button className="btn" onClick={() => {
                             navigate('/login')

@@ -62,3 +62,13 @@ img {
     margin: 0 10px 0 10px;
 }
 
+.user-button {
+    display: flex;
+    padding: .5em;
+}
+
+.user-button > h3 {
+    margin: 0;
+    padding-right: .5em
+}
+
