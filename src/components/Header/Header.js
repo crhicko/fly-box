@@ -28,6 +28,7 @@ const Header = () => {
                     <li><Link to="/flies">Flies</Link></li>
                     <li><Link to="/add-fly">Add Fly</Link></li>
                     <li><Link to="/error">Kit Builder</Link></li>
+                    <button onClick={() => logoutUser()}>Logout</button>
                 </ul>
             </nav>
             <div className="right-button-box">
