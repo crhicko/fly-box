@@ -5,7 +5,7 @@ header {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    min-height: 56px;
+    min-height: var(--header-height);
 }
 
 header > div {
@@ -20,6 +20,8 @@ nav {
 
 .logo {
     cursor: pointer;
+    height: calc(var(--header-height) * .75);
+    margin: 0 10px 0 10px;
 }
 
 .nav_buttons {

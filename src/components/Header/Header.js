@@ -2,6 +2,7 @@ import './Header.css'
 import { Link, useNavigate} from 'react-router-dom'
 import { useContext, useState } from 'react'
 import {UserContext} from '../../context/UserContext'
+import logo from '../../images/logo.png'
 
 const Header = () => {
 
@@ -15,13 +16,13 @@ const Header = () => {
             credentials: 'include'
         })
         setUser(null)
-        navigate("/home")
+        navigate("/flies")
     }
 
     return (
         <header>
             <div>
-                <img className="logo" src="http://localhost:3000/src/components/Header/3x.png" alt="logo"/>
+                <img className="logo" src={logo} alt="logo" onClick={() => navigate('/flies')}/>
             </div>
             <nav>
                 <ul className="nav_buttons">
