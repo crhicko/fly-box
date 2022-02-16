@@ -87,3 +87,11 @@ body {
 .scrollable {
   overflow-y: scroll;
 }
+
+.button-icon {
+  cursor:pointer;
+}
+
+.button-icon:hover {
+  transition: all .2s ease-in-out;
+}

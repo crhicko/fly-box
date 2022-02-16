@@ -1,6 +1,7 @@
 import { useParams } from "react-router"
 import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../context/UserContext"
+import { useNavigate } from "react-router-dom"
 import './FlyPage.css'
 import Loader from "../util/Loader/Loader"
 import FavoriteIcon from "../components/FavoriteIcon/FavoriteIcon"
@@ -9,9 +10,10 @@ import Tag from "../components/Tag/Tag"
 const FlyPage = () => {
     const [fly, setFly] = useState(null)
     const [favorite, setFavorite] = useState(false)
+    const navigate = useNavigate()
 
     const { id } = useParams()
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     useEffect(() => {
         const getFly = async () => {
@@ -27,6 +29,19 @@ const FlyPage = () => {
         getFly()
     }, [])
 
+    const handleDeleteClick = () => {
+        const deleteFly = async () => {
+            const res = await fetch(process.env.REACT_APP_API_URL + '/flies/' + id, {
+                credentials: 'include',
+                method: 'delete'
+            })
+            const data = await res.json()
+            console.log(data)
+            navigate('/flies')
+        }
+        deleteFly();
+    }
+
     return (
         <div className="rounded-box fly-content">
             {fly ? <div className="top-level">
@@ -39,7 +54,8 @@ const FlyPage = () => {
                 </div>
                 <div className="info">
                     <div className="iconBox">
-                        {(fly.user_id === user?.id) && <i className="far fa-edit"/>}
+                        {(fly.user_id === user?.id) && <i style={{height: '18px'}} className="button-icon fas fa-trash-alt" onClick={handleDeleteClick}/>}
+                        {(fly.user_id === user?.id) && <i className="button-icon fas fa-pencil-alt"/>}
                         <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id}/>
                     </div>
                     <h1>{fly.name}</h1>

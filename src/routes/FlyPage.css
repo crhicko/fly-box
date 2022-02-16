@@ -46,9 +46,10 @@ img {
     right: 0px;
 }
 
-.iconBox > *{
+.iconBox > * {
     display: inline;
-    margin-left: 8px;
+    margin: 0 4px 0 4px;
+    font-size: 1.25em;
 }
 
 .iconBox i:hover {
