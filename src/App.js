@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header/Header'
 import { useEffect, useState} from 'react'
 import Login from './components/Login'
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
 import FliesPage from './routes/FliesPage';
 import { UserContext } from './context/UserContext';
@@ -48,6 +48,7 @@ function App() {
               <Route path="/flies" element={<FliesPage />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/add-fly" element={<AddFlyPage />} />
+              <Route path="/" element={<Navigate to="/flies"/>} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>
