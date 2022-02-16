@@ -22,19 +22,20 @@ function App() {
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      console.log(process.env.REACT_APP_API_URL)
       const res = await fetch(process.env.REACT_APP_API_URL + '/user', {
         credentials: 'include'
       })
       const data = await res.json();
-      console.log(data)
       if (data.is_auth) {
-        console.log('setting user')
         setUser(data.user)
       }
     }
     checkLoggedIn()
   }, [])
+
+  //overwrite the console.log reference to point to an empty function if in production
+  if (process.env.REACT_APP_ENV === 'prod')
+    console.log = function no_console() {};
 
   return (
     <div className='sizing-wrapper'>
