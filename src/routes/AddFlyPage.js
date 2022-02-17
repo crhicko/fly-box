@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import { validateIsFilled, validateMaxLength } from "../util/Validator";
 import { useState, useEffect, useRef } from 'react'
 import { getTags } from '../api/tags'
+import { useNavigate } from "react-router-dom";
 import ResponsiveSearch from "../components/ResponsiveSearch/ResponsiveSearch";
 import Tag from "../components/Tag/Tag";
 import FlyDisplay from "../components/FlyDisplay/FlyDisplay";
@@ -14,11 +15,11 @@ const AddFlyPage = () => {
     const [searchResults, setSearchResults] = useState([])
     const [selectedVariant, setSelectedVariant] = useState(null)
 
+    const navigate = useNavigate()
+
     const selectedTags = useRef(new Set())
 
     const valuesRef = useRef()
-
-
 
     const validate = values => {
         let errors = {};
@@ -53,7 +54,6 @@ const AddFlyPage = () => {
     }, [selectedVariant])
 
     useEffect(() => {
-
         const storage = window.sessionStorage;
         if(storage.getItem('values')) {
             formik.setValues(JSON.parse(storage.getItem('values')))
@@ -82,22 +82,22 @@ const AddFlyPage = () => {
         //     console.log(value)
         // }
         // console.log(formData.entries().fo)
-        const res = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
+        const results = await fetch(process.env.REACT_APP_API_URL + '/flies/', {
             method: 'POST',
             credentials: 'include',
             body: formData
         })
+        const res = await results.json()
+        if(res.id) {
+            window.sessionStorage.removeItem('values')
+            navigate('/flies')
+        }
     }
-
-
-
-
 
     const handleVariantSearchClick = (fly) => {
         setSelectedVariant(fly)
         setSearchResults([])
     }
-
 
     return (
         <section className="rounded-box full-box styled-scrollbar scrollable">
