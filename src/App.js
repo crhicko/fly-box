@@ -48,7 +48,7 @@ function App() {
               <Route path="/flies/:id" element={<FlyPage />} />
               <Route path="/flies" element={<FliesPage />} />
               <Route path="/home" element={<HomePage />} />
-              <Route path="/add-fly" element={<AddFlyPage />} />
+              <Route path="/add-fly" element={user ? <AddFlyPage /> : <Navigate to="/login"/>} />
               <Route path="/" element={<Navigate to="/flies"/>} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
