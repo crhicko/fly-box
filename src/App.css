@@ -11,6 +11,10 @@
 #root {
   height: 100vh;
   --header-height: 56px;
+  --alert-btn-color: #f08080;
+  --btn-color: #57A773;
+  --base-color: #4E7C97;
+  --box-shadow-standard: 0 4px 12px 5px rgba(0, 0, 0, 0.3);
 }
 
 body {
@@ -27,16 +31,16 @@ body {
 }
 
 .center-box {
-    margin-left: min(10vw, 80px);
-    margin-right: min(10vw, 80px);
+    margin-left: min(5vw, 80px);
+    margin-right: min(5vw, 80px);
     margin-top: 20px;
     margin-bottom: 20px;
     height: calc(100vh - 96px);
 }
 
 .rounded-box {
-  border-radius: 12px;
-  background-color: #4E7C97;
+  border-radius: .75rem;
+  background-color: var(--base-color);
   padding: 1em 1em 1em 1em;
   /* height: calc(100% - 56px); */
 
@@ -50,9 +54,9 @@ body {
 
 .btn {
   padding: .5rem;
-  background-color: #57A773;
-    border-radius: .75rem;
-    border: 1px solid #57A773;
+  background-color: var(--btn-color);
+    border-radius: .5rem;
+    border: 1px solid var(--btn-color);
     color: white;
     transition: all 0.2s ease-in-out;
 }
@@ -94,4 +98,17 @@ body {
 
 .button-icon:hover {
   transition: all .2s ease-in-out;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, .5);
+  height: 100%;
+  width: 100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
