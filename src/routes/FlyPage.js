@@ -43,7 +43,7 @@ const FlyPage = () => {
         navigate('/flies')
     }
 
-    const deleteQuestion = () => {
+    const deleteQuestionOverlay = () => {
         return(
             <div className='overlay' onClick={() => setIsDeletePrompt(false)} style={{textAlign: 'center'}}>
                 <div className="rounded-box" onClick={(e) => {e.stopPropagation()}} style={{width: '200px', boxShadow: 'var(--box-shadow-standard)'}}>
@@ -61,8 +61,8 @@ const FlyPage = () => {
     }
 
     return (
-        <div className="rounded-box fly-content">
-            {isDeletePrompt ? deleteQuestion() : null}
+        <section className="rounded-box" style={{color: 'white'}}>
+            {isDeletePrompt ? deleteQuestionOverlay() : null}
             {fly ? <div className="top-level">
                 <div className="left-box">
                     <img src={fly.image_url} alt="Fly Pic"/>
@@ -81,7 +81,7 @@ const FlyPage = () => {
                 </div>
             </div> :
             <Loader/>}
-        </div>
+        </section>
     )
 }
 
