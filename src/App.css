@@ -68,6 +68,9 @@ body {
   cursor:pointer;
 }
 
+.btn > h3 {
+  margin: 0;
+}
 
 .styled-scrollbar {
   scrollbar-color: white rgba(0,0,0,0);
