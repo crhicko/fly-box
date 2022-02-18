@@ -43,7 +43,7 @@ const Header = () => {
                         :
                         <button className="btn" onClick={() => {
                             navigate('/login')
-                        }}>Log In</button>}
+                        }}><h3>Log In</h3></button>}
             </div>
         </header>
 

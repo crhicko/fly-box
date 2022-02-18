@@ -12,6 +12,10 @@ header > div {
     flex: 1 0 10vw;
 }
 
+header:nth-child(1) {
+    text-align: left;
+}
+
 nav {
     flex-grow: 1;
     flex-shrink: 0;
@@ -22,10 +26,14 @@ nav {
     cursor: pointer;
     height: calc(var(--header-height) * .75);
     margin: 0 10px 0 10px;
+    /* position: absolute; */
+    /* left:0; */
 }
 
 .nav_buttons {
-    list-style: none
+    list-style: none;
+    text-align: center;
+    padding: 0;
 }
 
 .nav_buttons li {
