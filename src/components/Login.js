@@ -13,7 +13,7 @@ const Login = () => {
     let navigate = useNavigate()
 
     const [isLoginForm, setIsLoginForm] = useState(true)
-
+    const [isLoggingIn, setIsLoggingIn] = useState(false)
     const [fetchError, setFetchError] = useState(undefined)
 
     const { user, setUser } = useContext(UserContext)
@@ -42,27 +42,34 @@ const Login = () => {
 
     const loginUser = async (user, pass) => {
         setFetchError(undefined)
-        const res = await fetch(process.env.REACT_APP_API_URL + '/login', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: user,
-                password: pass,
-            })
-        });
-        const data = await res.json();
-        console.log(data)
-        if (data.id) {
-            setUser(data)
-            navigate('/flies');
+        setIsLoggingIn(true)
+        try {
+            const res = await fetch(process.env.REACT_APP_API_URL + '/login', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: user,
+                    password: pass,
+                })
+            });
+            const data = await res.json();
+            console.log(data)
+            if (res.ok) {
+                setUser(data)
+                navigate('/flies');
+            }
+            else {
+                setFetchError(data.message);
+            }
+        } catch (error) {
+            console.error(error)
+            setFetchError('Something went wrong logging in.')
         }
-        else {
-            setFetchError(data.message);
-        }
+        setIsLoggingIn(false)
     }
 
     const registerUser = async (user, pass, email) => {
@@ -97,6 +104,7 @@ const Login = () => {
     return (
         <div className="wave-bg splash" style={{ textAlign:'center'}}>
             <div className="rounded-box" style={{width:"max(25vw,300px)", display: "inline-block", backgroundColor:'var(--bg-color-dark-secondary)'}}>
+                {isLoggingIn ? <Loader style={{textAlign: 'center', margin: 'auto'}}/> :
                 <form className='login-form' onSubmit={formik.handleSubmit}>
                     <h1>{isLoginForm ? 'Log In' : 'Sign Up'}</h1>
                     {!isLoginForm && <div className="form-row">
@@ -131,6 +139,7 @@ const Login = () => {
                     </div>
                     {fetchError ? <div className='form-error'>{fetchError}</div> : null}
                 </form>
+                }
             </div>
         </div>
     )
