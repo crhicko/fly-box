@@ -3,12 +3,17 @@ import { useNavigate } from 'react-router'
 import { UserContext } from '../context/UserContext'
 import { useFormik } from 'formik'
 import { validateUserName, validateLoginPassword, validateEmail, validateRegistrationPassword } from '../util/Validator'
+import Loader from '../util/Loader/Loader'
 import './Login.css'
+
+//TODO:
+//limit characters in username creation, no at no ticks all that
 
 const Login = () => {
     let navigate = useNavigate()
 
     const [isLoginForm, setIsLoginForm] = useState(true)
+
     const [fetchError, setFetchError] = useState(undefined)
 
     const { user, setUser } = useContext(UserContext)
@@ -92,39 +97,37 @@ const Login = () => {
     return (
         <div className="wave-bg splash" style={{ textAlign:'center'}}>
             <div className="rounded-box" style={{width:"max(25vw,300px)", display: "inline-block", backgroundColor:'var(--bg-color-dark-secondary)'}}>
-                <form onSubmit={formik.handleSubmit}>
+                <form className='login-form' onSubmit={formik.handleSubmit}>
+                    <h1>{isLoginForm ? 'Log In' : 'Sign Up'}</h1>
                     {!isLoginForm && <div className="form-row">
-                        <h3>Email</h3>
-                        <input id="email" name="email" type="text" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email}/>
+                        <input id="email" name="email" type="text" placeholder='Email' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email}/>
                         {formik.touched.email && formik.errors.email ? (
                             <div className='form-error'>{formik.errors.email}</div>
                         ): null}
                     </div>}
                     <div className="form-row">
-                        <h3>Username</h3>
-                        <input id="username" name="username" type="text" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.username}/>
+                        <input id="username" name="username" type="text" placeholder="Username" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.username}/>
                         {formik.touched.username && formik.errors.username ? (
                             <div className='form-error'>{formik.errors.username}</div>
                         ): null}
                     </div>
                     <div className="form-row">
-                        <h3>Password</h3>
-                        <input id="password" name="password" type="password" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password}/>
+                        <input id="password" name="password" type="password" placeholder='Password' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password}/>
                         {formik.touched.password && formik.errors.password ? (
                             <div className='form-error'>{formik.errors.password}</div>
                         ): null}
                     </div>
                     {!isLoginForm && <div className="form-row">
-                        <h3>Confirm Password</h3>
-                        <input id="confirm_password" name="confirm_password" type="password" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.confirm_password}/>
+                        <input id="confirm_password" name="confirm_password" type="password" placeholder='Confirm Password' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.confirm_password}/>
                         {formik.touched.confirm_password && formik.errors.confirm_password ? (
                             <div className='form-error'>{formik.errors.confirm_password}</div>
                         ): null}
                     </div>}
                     <div className='form-row'>
-                        <button className='btn text-large' type="submit">Submit</button>
-                        <br></br>
-                        <a className='change-form' onClick={toggleLoginForm}>{isLoginForm ? "Don't Have an Account? Sign Up Here!" : "I Have an Account"}</a>
+                        <button className='btn text-med' type="submit">Submit</button>
+                    </div>
+                    <div className="form-row">
+                        <a className='change-form' onClick={toggleLoginForm}>{isLoginForm ? "Don't Have an Account? Sign Up Here!" : "I Have an Account, Let me Log In!"}</a>
                     </div>
                     {fetchError ? <div className='form-error'>{fetchError}</div> : null}
                 </form>
