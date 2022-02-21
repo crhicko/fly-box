@@ -46,7 +46,7 @@ body {
 .rounded-box {
   border-radius: .75rem;
   background-color: var(--base-color);
-  padding: 1em 1em 1em 1em;
+  padding: 1em;
   /* height: calc(100% - 56px); */
 
 }
@@ -60,6 +60,11 @@ body {
 .text-large {
   font-size: 1.25rem;
   line-height: 1.5rem;
+}
+
+.text-med {
+  font-size: 1rem;
+  line-height: 1.25rem;
 }
 
 .btn {
