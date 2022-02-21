@@ -2,14 +2,14 @@ import './App.css';
 import Header from './components/Header/Header'
 import { useEffect, useState} from 'react'
 import Login from './components/Login'
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Switch} from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
 import FliesPage from './routes/FliesPage';
 import { UserContext } from './context/UserContext';
-import HomePage from './routes/HomePage';
 import FlyPage from './routes/FlyPage';
 import Footer from './components/Footer';
 import AddFlyPage from './routes/AddFlyPage';
+import LandingPage from './routes/LandingPage/LandingPage'
 
 function App() {
 
@@ -41,18 +41,20 @@ function App() {
     <div className='sizing-wrapper'>
       <UserContext.Provider value={{ user, setUser }}>
         <BrowserRouter>
-          <Header/>
-          <div className="center-box">
+
+          {/* <div className="center-box"> */}
             <Routes>
+              <Route element={<Header/>}>
+                <Route path="/flies/:id" element={<FlyPage />} />
+                <Route path="/flies" element={<FliesPage />} />
+                <Route path="/add-fly" element={user ? <> <AddFlyPage /> </>: <Navigate to="/login"/>} />
+              </Route>
+              {/* <Route path="/" element={<Navigate to="/flies"/>} /> */}
               <Route path="/login" element={<Login />} />
-              <Route path="/flies/:id" element={<FlyPage />} />
-              <Route path="/flies" element={<FliesPage />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/add-fly" element={user ? <AddFlyPage /> : <Navigate to="/login"/>} />
-              <Route path="/" element={<Navigate to="/flies"/>} />
+              <Route path="/" element={<LandingPage />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
-          </div>
+          {/* </div> */}
           <Footer/>
         </BrowserRouter>
       </UserContext.Provider>

@@ -5,7 +5,7 @@
 }
 
 .form-row {
-    color: white;
+    color: var(--primary-font-color);
 }
 
 .form-row > input{

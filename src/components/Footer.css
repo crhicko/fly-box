@@ -1,5 +1,5 @@
 .footer-box {
-    background-color: #16262E;
+    background-color: var(--bg-color-dark);
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -27,7 +27,7 @@
 
 .footer-list > li {
     font-weight: 300;
-    color: #6D8EA0;
+    color: var(--dark-font-color);
 }
 
 .footer-list > li:hover {
@@ -48,7 +48,7 @@
 
 .column i {
     margin: 8px;
-    color: #6D8EA0;
+    color: var(--dark-font-color);
 }
 
 .column i:hover {

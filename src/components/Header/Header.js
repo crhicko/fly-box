@@ -1,5 +1,5 @@
 import './Header.css'
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate, Outlet} from 'react-router-dom'
 import { useContext, useState } from 'react'
 import {UserContext} from '../../context/UserContext'
 import logo from '../../images/logo.png'
@@ -20,6 +20,7 @@ const Header = () => {
     }
 
     return (
+        <>
         <header>
             <div>
                 <img className="logo" src={logo} alt="logo" onClick={() => navigate('/flies')}/>
@@ -46,6 +47,9 @@ const Header = () => {
                         }}><h3>Log In</h3></button>}
             </div>
         </header>
+
+        <Outlet/>
+        </>
 
     )
 }

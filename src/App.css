@@ -12,11 +12,14 @@
   height: 100vh;
   --header-height: 56px;
   --alert-btn-color: #f08080;
-  --btn-color: #57A773;
-  --base-color: #4E7C97;
+  --btn-color: #21897E; /*428d5b  57A773*/
+  --bg-color-dark: #16262E;
+  --bg-color-dark-secondary: #2e4756;  /*#274e61 2e4756*/
+  --base-color: #4E7C97 ;
   --box-shadow-standard: 0 4px 12px 5px rgba(0, 0, 0, 0.3);
   --primary-font-color: white;
   --secondary-font-color: lightgrey;
+  --dark-font-color: #6D8EA0;
 }
 
 body {
@@ -54,8 +57,13 @@ body {
 }
 /* 2E4756 */
 
+.text-large {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
 .btn {
-  padding: .5rem;
+  padding: .75rem;
   background-color: var(--btn-color);
     border-radius: .5rem;
     border: 1px solid var(--btn-color);
@@ -116,4 +124,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.wave-bg {
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('./images/splash-wave.svg');
 }

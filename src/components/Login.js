@@ -90,8 +90,8 @@ const Login = () => {
     }
 
     return (
-        <div style={{ textAlign:'center'}}>
-            <div className="rounded-box" style={{width:"max(25vw,300px)", display: "inline-block"}}>
+        <div className="wave-bg splash" style={{ textAlign:'center'}}>
+            <div className="rounded-box" style={{width:"max(25vw,300px)", display: "inline-block", backgroundColor:'var(--bg-color-dark-secondary)'}}>
                 <form onSubmit={formik.handleSubmit}>
                     {!isLoginForm && <div className="form-row">
                         <h3>Email</h3>
@@ -121,8 +121,8 @@ const Login = () => {
                             <div className='form-error'>{formik.errors.confirm_password}</div>
                         ): null}
                     </div>}
-                    <div className='form-row' >
-                        <button style={{}} type="submit">Submit</button>
+                    <div className='form-row'>
+                        <button className='btn text-large' type="submit">Submit</button>
                         <br></br>
                         <a className='change-form' onClick={toggleLoginForm}>{isLoginForm ? "Don't Have an Account? Sign Up Here!" : "I Have an Account"}</a>
                     </div>

@@ -1,0 +1,33 @@
+.splash {
+    background-color: darkslategray;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    padding: 100px 20vw;
+    flex-direction: column;
+}
+
+.button-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    animation: 0.6s ease-out buttonBoxLoad;
+}
+
+.button-box > button:not(:first-child) {
+    margin-left: 1.5rem;
+}
+
+@keyframes buttonBoxLoad {
+    0% {
+        opacity: .2;
+        transform: translateY(-40%)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%)
+    }
+}
