@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header/Header'
 import { useEffect, useState} from 'react'
 import Login from './components/Login'
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Switch} from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
 import FliesPage from './routes/FliesPage';
 import { UserContext } from './context/UserContext';
@@ -44,13 +44,15 @@ function App() {
 
           {/* <div className="center-box"> */}
             <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/flies/:id" element={<><Header/> <FlyPage /></>} />
-              <Route path="/flies" element={<><Header/> <FliesPage /> </>} />
-              <Route path="/add-fly" element={user ? <> <Header/> <AddFlyPage /> </>: <Navigate to="/login"/>} />
+              <Route element={<Header/>}>
+                <Route path="/flies/:id" element={<FlyPage />} />
+                <Route path="/flies" element={<FliesPage />} />
+                <Route path="/add-fly" element={user ? <> <AddFlyPage /> </>: <Navigate to="/login"/>} />
+              </Route>
               {/* <Route path="/" element={<Navigate to="/flies"/>} /> */}
+              <Route path="/login" element={<Login />} />
               <Route path="/" element={<LandingPage />} />
-              <Route path="*" element={<><Header/> <ErrorPage /> </>} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           {/* </div> */}
           <Footer/>
