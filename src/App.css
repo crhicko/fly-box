@@ -12,11 +12,13 @@
   height: 100vh;
   --header-height: 56px;
   --alert-btn-color: #f08080;
-  --btn-color: #57A773;
+  --btn-color: #57A773; /*428d5b*/
+  --bg-color-dark: #16262E;
   --base-color: #4E7C97;
   --box-shadow-standard: 0 4px 12px 5px rgba(0, 0, 0, 0.3);
   --primary-font-color: white;
   --secondary-font-color: lightgrey;
+  --dark-font-color: #6D8EA0;
 }
 
 body {
@@ -116,4 +118,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.wave-bg {
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('./images/splash-wave.svg');
 }
