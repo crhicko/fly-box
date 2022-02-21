@@ -8,6 +8,7 @@ import './Login.css'
 
 //TODO:
 //limit characters in username creation, no at no ticks all that
+//wrap login and reg functions to cleanup
 
 const Login = () => {
     let navigate = useNavigate()
@@ -73,28 +74,35 @@ const Login = () => {
     }
 
     const registerUser = async (user, pass, email) => {
-        const res = await fetch(process.env.REACT_APP_API_URL + '/register', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: user,
-                email: email,
-                password: pass,
+        setFetchError(undefined)
+        setIsLoggingIn(true)
+        try {
+            const res = await fetch(process.env.REACT_APP_API_URL + '/register', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: user,
+                    email: email,
+                    password: pass,
+                })
             })
-        })
-        const data = await res.json();
-        // console.log(data)
-        if (data.id) {
-            // setUser(data.id)
-            loginUser(user, pass)
+            const data = await res.json();
+            if (data.id) {
+                loginUser(user, pass)
+            }
+            else {
+                setFetchError(data.message);
+            }
         }
-        else {
-            setFetchError(data.message);
+        catch (error) {
+            console.error(error)
+            setFetchError('Something went wrong registering, please try again later.')
         }
+        setIsLoggingIn(false)
     }
 
     const toggleLoginForm = () => {
