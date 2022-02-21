@@ -56,8 +56,13 @@ body {
 }
 /* 2E4756 */
 
+.text-large {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
 .btn {
-  padding: .5rem;
+  padding: .75rem;
   background-color: var(--btn-color);
     border-radius: .5rem;
     border: 1px solid var(--btn-color);
