@@ -12,9 +12,10 @@
   height: 100vh;
   --header-height: 56px;
   --alert-btn-color: #f08080;
-  --btn-color: #57A773; /*428d5b*/
+  --btn-color: #21897E; /*428d5b  57A773*/
   --bg-color-dark: #16262E;
-  --base-color: #4E7C97;
+  --bg-color-dark-secondary: #2e4756;  /*#274e61 2e4756*/
+  --base-color: #4E7C97 ;
   --box-shadow-standard: 0 4px 12px 5px rgba(0, 0, 0, 0.3);
   --primary-font-color: white;
   --secondary-font-color: lightgrey;
