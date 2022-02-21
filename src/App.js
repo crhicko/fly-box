@@ -47,7 +47,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/flies/:id" element={<><Header/> <FlyPage /></>} />
               <Route path="/flies" element={<><Header/> <FliesPage /> </>} />
-              <Route path="/add-fly" element={user ? <AddFlyPage /> : <Navigate to="/login"/>} />
+              <Route path="/add-fly" element={user ? <> <Header/> <AddFlyPage /> </>: <Navigate to="/login"/>} />
               {/* <Route path="/" element={<Navigate to="/flies"/>} /> */}
               <Route path="/" element={<LandingPage />} />
               <Route path="*" element={<><Header/> <ErrorPage /> </>} />

@@ -100,7 +100,7 @@ const AddFlyPage = () => {
     }
 
     return (
-        <section className="rounded-box full-box styled-scrollbar scrollable">
+        <section className="center-box rounded-box full-box styled-scrollbar scrollable">
             <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
                 <div className="form-row">
                     <h3>Name</h3>

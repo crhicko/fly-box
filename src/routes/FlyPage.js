@@ -75,7 +75,7 @@ const FlyPage = () => {
 	};
 
 	return (
-		<section className="rounded-box" style={{ color: "white" }}>
+		<section className="center-box rounded-box" style={{ color: "white" }}>
 			{isDeletePrompt ? deleteQuestionOverlay() : null}
 			{fly ? (
 				<div>
