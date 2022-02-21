@@ -6,14 +6,14 @@ const Footer = () => {
         <div className="footer-box">
             <div className='text-section'>
                 <div className='column'>
-                    <h3>Header</h3>
+                    <h3>Fly Box</h3>
                     <ul className='footer-list'>
-                        <li>Contact Us</li>
-                        <li>footer</li>
+                        <li>Contact</li>
+                        <li>About</li>
                     </ul>
                 </div>
                 <div className='column'>
-                    <h3>Developer Contacts</h3>
+                    <h3>Developer</h3>
                     <a href="https://github.com/crhicko"><i className="fab fa-github fa-2x"/></a>
                     <a href="https://www.linkedin.com/in/clayton-hickok-10b2a814a/"><i className="fab fa-linkedin-in fa-2x"/></a>
                     {/* <i class="fab fa-github"></i>
