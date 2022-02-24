@@ -4,7 +4,7 @@ import { useEffect, useState} from 'react'
 import Login from './components/Login'
 import { BrowserRouter, Routes, Route, Navigate, Switch} from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
-import FliesPage from './routes/FliesPage';
+import FliesPage from './routes/FliesPage/FliesPage';
 import { UserContext } from './context/UserContext';
 import FlyPage from './routes/FlyPage';
 import Footer from './components/Footer';
@@ -38,7 +38,7 @@ function App() {
     console.log = function no_console() {};
 
   return (
-    <div className='sizing-wrapper'>
+    <>
       <UserContext.Provider value={{ user, setUser }}>
         <BrowserRouter>
 
@@ -58,7 +58,7 @@ function App() {
           <Footer/>
         </BrowserRouter>
       </UserContext.Provider>
-    </div>
+    </>
   );
 }
 

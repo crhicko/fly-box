@@ -4,7 +4,7 @@
     min-width: 200px;
     transition: background-color 0.3s ease-in-out;
     color: white;
-    background-color: #2E4756;
+    background-color: var(--bg-color-dark-secondary);
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -30,9 +30,10 @@
 }
 
 .card:hover{
-    background-color: #0D2533;
+    /* background-color: #0D2533; */
     cursor:pointer;
-
+    /* background-color: #1860a0; */
+    background-image: url('../../images/splash-wave.svg')
 }
 
 .card > p {
