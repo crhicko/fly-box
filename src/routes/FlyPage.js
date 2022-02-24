@@ -63,7 +63,7 @@ const FlyPage = () => {
 								Are you sure you want to delete?
 							</h3>
 							<br />
-							<button className="btn btn-delete" onClick={deleteFly}>
+							<button className="btn btn-delete text-large" onClick={deleteFly}>
 								Delete
 							</button>
 						</>
