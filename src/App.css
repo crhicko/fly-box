@@ -159,10 +159,15 @@ body {
 }
 
 .grow-icon {
+  cursor: pointer;
   transition: transform .3s;
   will-change: transform;
 }
 
 .grow-icon:hover {
   transform: scale(1.35);
+}
+
+.icon-shadow {
+  filter: drop-shadow(0 0 10px black);
 }

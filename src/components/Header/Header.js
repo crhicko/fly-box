@@ -2,6 +2,7 @@ import './Header.css'
 import { Link, useNavigate, Outlet} from 'react-router-dom'
 import { useContext, useState } from 'react'
 import {UserContext} from '../../context/UserContext'
+import { User } from 'phosphor-react'
 import logo from '../../images/logo.png'
 
 const Header = () => {
@@ -27,7 +28,7 @@ const Header = () => {
                 <>
                     <button className="btn user-button" onClick={() =>  logoutUser()}>
                         <h3>{user?.username}</h3>
-                        <i className="far fa-user fa-lg"/>
+                        <User size={20} />
                     </button>
                 </>
                     :
