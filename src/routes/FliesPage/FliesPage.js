@@ -35,7 +35,8 @@ const FliesPage = () => {
                 {flies.map((f) => (<FlyDisplay key={f.id} fly={f}/>))}
               </div>
               <div style={{width: "100%", textAlign: 'center', margin:'20px 0'}}>
-                <button className="btn text-large load-more-btn">Load More</button>
+
+                {/* <button className="btn text-large load-more-btn">Load More</button> TEMP DISABLE*/}
               </div>
             </>
               ) :
