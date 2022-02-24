@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ user, setUser, hasCheckedUser }}>
         <BrowserRouter>
 
           {/* <div className="center-box"> */}
