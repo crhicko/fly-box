@@ -82,6 +82,7 @@ body {
     border: 1px solid var(--btn-color);
     color: white;
     transition: all 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .btn:hover {
