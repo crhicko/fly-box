@@ -25,7 +25,7 @@ const FliesPage = () => {
 
     return(
       <section className="content-bounding-box">
-        <input className="input-box fly-search-box" placeholder="Search..." type="search"></input>
+        <input className="input-box fly-search-box" placeholder="Search...THIS DOES NOT WORK YET" type="search"></input>
         <div className="center-box  styled-scrollbar scrollable" style={{height: '100%'}}>
 
             {reqFinished ?
