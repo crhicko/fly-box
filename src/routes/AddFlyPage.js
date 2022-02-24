@@ -145,7 +145,7 @@ const AddFlyPage = () => {
                         {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
                     </div>
                 </div>
-                <button className="btn" type="submit">Submit</button>
+                <button className="btn text-large" type="submit">Submit</button>
             </form>
         </section>
     )
