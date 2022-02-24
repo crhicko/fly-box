@@ -2,9 +2,9 @@
     border-radius: 12px;
     flex: 1 1 20% ;
     min-width: 200px;
-    transition: background-color 0.3s ease-in-out;
     color: white;
-    background-color: #2E4756;
+    transition: background-color 0.3s ease-in-out;
+    background-color: var(--bg-color-dark-secondary);
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -12,6 +12,7 @@
     overflow: hidden;
     box-shadow: 0 4px 12px 5px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
+    position: relative;
 }
 
 .card > img {
@@ -30,9 +31,14 @@
 }
 
 .card:hover{
-    background-color: #0D2533;
+    /* background-color: #0D2533; */
     cursor:pointer;
+    background-color: #1860a0;
 
+}
+
+.card:hover > .info-horizontal {
+    /* background: linear-gradient(180deg, rgba(22,38,46,1) 0%, rgba(79,172,247,1) 63%, rgba(36,85,199,1) 100%); */
 }
 
 .card > p {

@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './components/Header/Header'
-import { useEffect, useState} from 'react'
+import { useContext, useEffect, useState} from 'react'
 import Login from './components/Login'
 import { BrowserRouter, Routes, Route, Navigate, Switch} from "react-router-dom";
 import ErrorPage from './routes/ErrorPage';
-import FliesPage from './routes/FliesPage';
+import FliesPage from './routes/FliesPage/FliesPage';
 import { UserContext } from './context/UserContext';
 import FlyPage from './routes/FlyPage';
 import Footer from './components/Footer';
@@ -14,6 +14,7 @@ import LandingPage from './routes/LandingPage/LandingPage'
 function App() {
 
   const [user, setUser] = useState(null)
+  const [hasCheckedUser, setHasCheckedUser] = useState(false)
 
   const toggleLoginModal = () => {
     if (!openLoginModal) setOpenLoginModal(true)
@@ -29,6 +30,7 @@ function App() {
       if (data.is_auth) {
         setUser(data.user)
       }
+      setHasCheckedUser(true)
     }
     checkLoggedIn()
   }, [])
@@ -38,8 +40,8 @@ function App() {
     console.log = function no_console() {};
 
   return (
-    <div className='sizing-wrapper'>
-      <UserContext.Provider value={{ user, setUser }}>
+    <>
+      <UserContext.Provider value={{ user, setUser, hasCheckedUser }}>
         <BrowserRouter>
 
           {/* <div className="center-box"> */}
@@ -47,7 +49,8 @@ function App() {
               <Route element={<Header/>}>
                 <Route path="/flies/:id" element={<FlyPage />} />
                 <Route path="/flies" element={<FliesPage />} />
-                <Route path="/add-fly" element={user ? <> <AddFlyPage /> </>: <Navigate to="/login"/>} />
+                {console.log(hasCheckedUser)}
+                <Route path="/add-fly" element={user || !hasCheckedUser ? <> <AddFlyPage /> </>: <Navigate to="/login"/>} />
               </Route>
               {/* <Route path="/" element={<Navigate to="/flies"/>} /> */}
               <Route path="/login" element={<Login />} />
@@ -58,7 +61,7 @@ function App() {
           <Footer/>
         </BrowserRouter>
       </UserContext.Provider>
-    </div>
+    </>
   );
 }
 

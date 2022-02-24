@@ -9,7 +9,8 @@
 }
 
 #root {
-  height: 100vh;
+  /* height: 100vh; */
+  min-height: 100vh;
   --header-height: 56px;
   --alert-btn-color: #f08080;
   --btn-color: #21897E; /*428d5b  57A773*/
@@ -20,10 +21,11 @@
   --primary-font-color: white;
   --secondary-font-color: lightgrey;
   --dark-font-color: #6D8EA0;
+  background-color: var(--bg-color-dark);
 }
 
 body {
-  background: #A7C6DA;
+  /* #A7C6DA */
   margin: 0;
   min-height: 100%;
   position: relative;
@@ -36,16 +38,22 @@ body {
 }
 
 .center-box {
-    margin-left: min(5vw, 80px);
-    margin-right: min(5vw, 80px);
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-left: min(5vw, 80px);
+    margin-right: min(5vw, 80px); */
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
     height: calc(100vh - 96px);
+}
+
+.content-bounding-box {
+  margin-left: min(5vw, 80px);
+  margin-right: min(5vw, 80px);
+  height: 100%;
 }
 
 .rounded-box {
   border-radius: .75rem;
-  background-color: var(--base-color);
+  background-color: var(--bg-color-dark-secondary);
   padding: 1em;
   /* height: calc(100% - 56px); */
 
@@ -74,6 +82,7 @@ body {
     border: 1px solid var(--btn-color);
     color: white;
     transition: all 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .btn:hover {
@@ -95,7 +104,8 @@ body {
 }
 
 .styled-scrollbar::-webkit-scrollbar-thumb {
-  background:white
+  background:white;
+  border: 6px solid transparent;
 }
 
 .styled-scrollbars::-webkit-scrollbar-track { /* Background */
@@ -138,4 +148,26 @@ body {
   background-position: center;
   background-size: cover;
   background-image: url('./images/splash-wave.svg');
+}
+
+.input-box {
+  padding: .5em;
+}
+
+.input-box::placeholder {
+
+}
+
+.grow-icon {
+  cursor: pointer;
+  transition: transform .3s;
+  will-change: transform;
+}
+
+.grow-icon:hover {
+  transform: scale(1.35);
+}
+
+.icon-shadow {
+  filter: drop-shadow(0 0 10px black);
 }

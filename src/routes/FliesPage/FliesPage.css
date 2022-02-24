@@ -1,0 +1,18 @@
+.fly-search-box {
+    width: 100%;
+    margin: 30px 0;
+    border-radius: 0;
+    color: white;
+    background-color: var(--bg-color-dark-secondary);
+    border: 0;
+    box-shadow: var(--box-shadow-standard);
+    font-size: 1rem;
+}
+
+.fly-search-box::placeholder {
+    color: var(--secondary-font-color)
+}
+
+.center-box > .load-more-btn {
+    text-align: center;
+}

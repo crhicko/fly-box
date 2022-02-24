@@ -46,9 +46,11 @@
     text-align: center;
 }
 
-.column i {
-    margin: 8px;
+.column path {
     color: var(--dark-font-color);
+}
+.column svg {
+    margin: 0px 8px;
 }
 
 .column i:hover {

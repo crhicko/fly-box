@@ -18,14 +18,16 @@ const FlyDisplay = ({ fly, handleClick, className }) => {
 
     return (
         <div className={`card ${className ? className : ''}`} onClick={handleClick}>
-
+            <div style={{position:'absolute', top:'.25em', right:'.25em'}}>
+                <FavoriteIcon className='icon-shadow' isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id} />
+            </div>
             <img src={fly.image_url} alt="Fly Pic"/>
             <div className="info-horizontal">
                 <h3>{fly.name}</h3>
                 <p className='fly-description'>{fly.tagline ? fly.tagline : fly.description}</p>
                 <div className='bottom-row'>
                     <div className='icon-box' style={{padding: '6px'}}>
-                        <FavoriteIcon isFavorite={favorite} setFavorite={setFavorite} fly_id={fly.id} />
+
                     </div>
                     <span className='divider-bar'/>
                     <div className='tag-box'>

@@ -61,7 +61,8 @@ const AddFlyPage = () => {
 
         return function cleanup() {
             console.log(valuesRef.current)
-            storage.setItem('values', JSON.stringify(valuesRef.current))
+            if(valuesRef.current)
+                storage.setItem('values', JSON.stringify(valuesRef.current))
         }
     }, [])
 
@@ -90,6 +91,7 @@ const AddFlyPage = () => {
         const res = await results.json()
         if(res.id) {
             window.sessionStorage.removeItem('values')
+            valuesRef.current = null
             navigate('/flies')
         }
     }
@@ -143,7 +145,7 @@ const AddFlyPage = () => {
                         {selectedVariant ? <FlyDisplay fly={selectedVariant} handleClick={() => {}} className='no-interaction'/> : null}
                     </div>
                 </div>
-                <button className="btn" type="submit">Submit</button>
+                <button className="btn text-large" type="submit">Submit</button>
             </form>
         </section>
     )
