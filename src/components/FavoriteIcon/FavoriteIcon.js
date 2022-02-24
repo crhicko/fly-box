@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
+import { Star } from 'phosphor-react'
 
 const FavoriteIcon = ( {isFavorite, setFavorite, fly_id} ) => {
 
@@ -28,7 +29,8 @@ const FavoriteIcon = ( {isFavorite, setFavorite, fly_id} ) => {
     }
 
     return (
-        <i className={`${isFavorite ? 'fas' : 'far'} fa-star button-icon`} onClick={toggleFavorite} style={{cursor: 'pointer'}}/>
+        <Star className='grow-icon' size={24} weight={isFavorite ? 'fill' : 'duotone'} color={isFavorite ? 'gold' : 'white'} onClick={(e) => {toggleFavorite(); e.stopPropagation();}} style={{cursor: 'pointer',  filter: 'drop-shadow(0 0 10px black)'}}/>
+        // <i className={`${isFavorite ? 'fas' : 'far'} fa-star button-icon`} onClick={toggleFavorite} style={{cursor: 'pointer'}}/>
     )
 }
 

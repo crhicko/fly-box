@@ -157,3 +157,12 @@ body {
 .input-box::placeholder {
 
 }
+
+.grow-icon {
+  transition: transform .3s;
+  will-change: transform;
+}
+
+.grow-icon:hover {
+  transform: scale(1.35);
+}
