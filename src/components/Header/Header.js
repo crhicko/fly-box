@@ -16,6 +16,7 @@ const Header = () => {
     const logoutUser = async () => {
         console.log("HERE")
         await fetch(process.env.REACT_APP_API_URL + '/logout', {
+            method : 'POST',
             credentials: 'include'
         })
         setUser(null)
