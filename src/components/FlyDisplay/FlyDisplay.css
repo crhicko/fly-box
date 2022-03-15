@@ -90,6 +90,7 @@ h1 {
 }
 
 .tag-box {
+    height: 30px;
     margin: 4px 0 4px 0;
     padding: 0 4px 0 4px;
     display: flex;

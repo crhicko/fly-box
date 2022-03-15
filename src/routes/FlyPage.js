@@ -76,45 +76,47 @@ const FlyPage = () => {
 	};
 
 	return (
-		<section className="center-box rounded-box" style={{ color: "white" }}>
-			{isDeletePrompt ? deleteQuestionOverlay() : null}
-			{fly ? (
-				<div>
-					<img className="title-image" src={fly.image_url} alt="Fly Pic" />
-					<div className="top-bar">
-						<div className="tagBox" style={{ flexWrap: "nowrap" }}>
-							{fly.tag_list &&
-								fly.tag_list
-									.split(",")
-									.map((tag, index) => (
-										<Tag text={tag} key={index} interactable={false} />
-									))}
+		<section className='content-bounding-box'>
+			<section className="center-box rounded-box" style={{ color: "white" }}>
+				{isDeletePrompt ? deleteQuestionOverlay() : null}
+				{fly ? (
+					<div>
+						<img className="title-image" src={fly.image_url} alt="Fly Pic" />
+						<div className="top-bar">
+							<div className="tagBox" style={{ flexWrap: "nowrap" }}>
+								{fly.tag_list &&
+									fly.tag_list
+										.split(",")
+										.map((tag, index) => (
+											<Tag text={tag} key={index} interactable={false} />
+										))}
+							</div>
+							<div className="iconBox">
+								{fly.user_id === user?.id && (
+									<Trash className='grow-icon' size={24} weight="regular" onClick={() => setIsDeletePrompt(true)}/>
+								)}
+								{fly.user_id === user?.id && (
+									<Pencil className='grow-icon' size={24} weight="regular" />
+								)}
+								<FavoriteIcon
+									isFavorite={favorite}
+									setFavorite={setFavorite}
+									fly_id={fly.id}
+								/>
+							</div>
 						</div>
-						<div className="iconBox">
-							{fly.user_id === user?.id && (
-								<Trash className='grow-icon' size={24} weight="regular" onClick={() => setIsDeletePrompt(true)}/>
-							)}
-							{fly.user_id === user?.id && (
-								<Pencil className='grow-icon' size={24} weight="regular" />
-							)}
-							<FavoriteIcon
-								isFavorite={favorite}
-								setFavorite={setFavorite}
-								fly_id={fly.id}
-							/>
-						</div>
-					</div>
-                    <hr style={{color: 'var(--secondary-font-color)'}}/>
-					<h2 className="title">{fly.name}</h2>
-					<h4 className="tagline">
-						{fly.tagline ? fly.tagline : "The fly that started it all"}
-					</h4>
+						<hr style={{color: 'var(--secondary-font-color)'}}/>
+						<h2 className="title">{fly.name}</h2>
+						<h4 className="tagline">
+							{fly.tagline ? fly.tagline : "The fly that started it all"}
+						</h4>
 
-					<p className="description">{fly.description}</p>
-				</div>
-			) : (
-				<Loader />
-			)}
+						<p className="description">{fly.description}</p>
+					</div>
+				) : (
+					<Loader />
+				)}
+			</section>
 		</section>
 	);
 };

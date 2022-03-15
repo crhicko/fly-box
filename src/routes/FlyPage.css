@@ -63,7 +63,7 @@ img {
 
 .title {
     text-align: center;
-    margin: .5rem 0 .5rem 0;  
+    margin: .5rem 0 .5rem 0;
     color: var(--primary-font-color);
 }
 
@@ -78,6 +78,7 @@ img {
     flex-wrap: nowrap;
     width: 100%;
     position: relative;
+    height: 30px;
 }
 
 .iconBox {

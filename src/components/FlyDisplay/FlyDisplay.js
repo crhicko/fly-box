@@ -26,10 +26,6 @@ const FlyDisplay = ({ fly, handleClick, className }) => {
                 <h3>{fly.name}</h3>
                 <p className='fly-description'>{fly.tagline ? fly.tagline : fly.description}</p>
                 <div className='bottom-row'>
-                    <div className='icon-box' style={{padding: '6px'}}>
-
-                    </div>
-                    <span className='divider-bar'/>
                     <div className='tag-box'>
                         {fly.tag_list && fly.tag_list.split(',').map((tag, index) => <Tag text={tag} key={index} interactable={false}/>)}
                     </div>
